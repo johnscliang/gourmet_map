@@ -1,11 +1,9 @@
-<!--index.wxml-->
-<view class="container">
 
-  <view>
-    <text>{{app_name}}</text>
-  </view>
-
-  <button bindtap="showMap" >打开地图</button>
-
-
+<view id="open_map"  bindtap="showMap">
+    <text id="text_open_map">打开地图</text>
+</view>
+<view wx:for="{{points}}">
+  {{index}}
+  <image src="http://dwz.cn/5ayZ2a"></image>
+  {{item.name}}
 </view>

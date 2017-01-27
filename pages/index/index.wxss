@@ -1,21 +1,10 @@
-/**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+#open_map{
+    text-align: center;
+    background: palevioletred;
+    line-height: 2.8em;
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.userinfo-nickname {
-  color: #aaa;
-}
-
-.usermotto {
-  margin-top: 200px;
+#text_open_map{
+    color: white;
+    vertical-align: true;
 }
