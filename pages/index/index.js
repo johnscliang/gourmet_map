@@ -30,11 +30,17 @@ Page({
         ,latitude: 21.611153
       }
     ]
-  },
+  }
   //跳转到地图
-  showMap: function() {
+  ,showMap: function() {
     wx.navigateTo({
       url: '../map/map'
+    })
+  }
+  //添加美食点点
+  ,addPoint: function(){
+    wx.navigateTo({
+      url: '../select_lnglat/select_lnglat'
     })
   }
 })

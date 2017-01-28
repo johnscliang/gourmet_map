@@ -1,0 +1,12 @@
+<view style="height:100%">
+<button type="primary">confirm</button>
+
+<map id="map4select" 
+ longitude="{{longitude}}" latitude="{{latitude}}" 
+ markers="{{markers}}"
+ scale="20" 
+ controls="{{controls}}"
+ bindtap="change">
+</map>
+
+</view>
