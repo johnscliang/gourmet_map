@@ -1,8 +1,6 @@
 {
- "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#000000",
-    "navigationBarTitleText": "选择位置",
-    "navigationBarTextStyle":"white"
-  }
+  "backgroundTextStyle":"light",
+  "navigationBarBackgroundColor": "#000000",
+  "navigationBarTitleText": "选择位置",
+  "navigationBarTextStyle":"white"
 }

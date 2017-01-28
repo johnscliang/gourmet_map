@@ -27,15 +27,16 @@ Page({
   }
   //change
   ,change: function(e){
-      that.setData({
-          longitude: 110.290203
-          ,latitude: 21.6096
+      console.log(e);
+      this.setData({
+          longitude: e.target.longitude
+          ,latitude: e.target.latitude
           ,markers:[
             {
             id: 0
             ,iconPath: "../../imgs/ic_position.png"
-            ,longitude: 110.290203
-            ,latitude: 21.6096
+            ,longitude: e.target.longitude
+            ,latitude: e.target.latitude
             ,width: 30
             ,height: 30
             }
@@ -43,9 +44,9 @@ Page({
         })
   }
   ,regionchange(e) {
-    alert(e.type)
+      console.log(e)
   }
   ,markertap(e) {
-    alert(e.markerId)
+    console.log(e)
   }
 })

@@ -1,1 +1,6 @@
-{}
+{
+  "backgroundTextStyle":"light",
+  "navigationBarBackgroundColor": "#000000",
+  "navigationBarTitleText": "附近的美食",
+  "navigationBarTextStyle":"white"
+}
