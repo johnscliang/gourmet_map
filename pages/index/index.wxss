@@ -4,22 +4,23 @@
     line-height: 2.8em;
     height: 2.8em;
     background: orange;
-    /*text-align: center;*/
 }
 
 .tab{
-      height: 2.8em;
+    height: 2.8em;
     width: 50%;
-    display: inline;
     background: red;
+    text-align: center;
+    color: white;
 }
 
 #open_map{
-    
+    float: left;
 }
 
 #add_gourmet{
-    
+    float: left;
+    background: orange;
 }
 
 .img{

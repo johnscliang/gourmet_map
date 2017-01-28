@@ -1,3 +1,4 @@
 <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" 
+ markers="{{markers}}"
  show-location scale="20" controls="{{controls}}">
 </map>

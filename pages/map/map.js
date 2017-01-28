@@ -2,7 +2,32 @@ var app = getApp()
 
 Page({
   data: {
-    markers: []
+    markers: [
+      {
+        id: 0
+        ,iconPath: "../../imgs/ic_position.png"
+        ,longitude: 110.290740
+        ,latitude: 21.610395
+        ,width: 30
+        ,height: 30
+      }
+      ,{
+        id: 1
+        ,iconPath: "../../imgs/ic_position.png"
+        ,longitude: 110.290203
+        ,latitude: 21.609637
+        ,width: 30
+        ,height: 30
+      }
+      ,{
+        id: 2
+        ,iconPath: "../../imgs/ic_position.png"
+        ,longitude: 110.292842
+        ,latitude: 21.611153
+        ,width: 30
+        ,height: 30
+      }
+    ]
     ,polyline: []
     ,controls: [{}]
     ,longitude: 113.298569
