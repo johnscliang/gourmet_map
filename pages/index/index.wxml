@@ -1,9 +1,37 @@
 
-<view id="open_map"  bindtap="showMap">
-    <text id="text_open_map">打开地图</text>
+<view class="header">
+  <view id="open_map" class="tab" bindtap="showMap">
+    <text>打开地图</text>
+  </view>
+  <view id="add_gourmet" class="tab">
+    <text>添加美食</text>
+  </view>
 </view>
+
+<view style="height:2.8em;"/>
+
+<view id="gourmet_list">
+  
 <view wx:for="{{points}}">
-  {{index}}
-  <image src="http://dwz.cn/5ayZ2a"></image>
-  {{item.name}}
+
+  <view wx:if="{{index > 0}}">
+    <view style="height:1em;"/>
+  </view>
+  
+  <view>
+    <text class="itemtext_title">{{item.name}}</text>
+  </view>
+
+  <image class="img" mode="aspectFill" src="http://dwz.cn/5ayZ2a"></image>
+
+  <view class="footer">
+    <text class="itemtext_footer">{{item.reporter}}  </text>
+    <text class="itemtext_footer">  评论:{{item.comments.length}}</text>
+    <text class="itemtext_footer item_create_time">{{item.create_time}}</text>
+  </view>
+
+  <view class="line"/>
+
+</view>
+
 </view>

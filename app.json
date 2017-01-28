@@ -6,7 +6,7 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#000000",
-    "navigationBarTitleText": "附近的美食",
+    "navigationBarTitleText": "美食地图",
     "navigationBarTextStyle":"white"
   }
 }

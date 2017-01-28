@@ -1,10 +1,49 @@
-#open_map{
-    text-align: center;
-    background: palevioletred;
+.header{
+    position: fixed;
+    width: 100%;
     line-height: 2.8em;
+    height: 2.8em;
+    background: orange;
+    /*text-align: center;*/
 }
 
-#text_open_map{
-    color: white;
-    vertical-align: true;
+.tab{
+      height: 2.8em;
+    width: 50%;
+    display: inline;
+    background: red;
+}
+
+#open_map{
+    
+}
+
+#add_gourmet{
+    
+}
+
+.img{
+    width: 100%;
+    height: 12em;
+}
+
+#gourmet_list{
+    padding: 12px;
+}
+
+.itemtext_title{
+    font-weight: 700
+}
+
+.itemtext_footer{
+    color: gray
+}
+
+.item_create_time{
+    float: right
+}
+
+.line{
+    height: 1px;
+    background: limegreen;
 }

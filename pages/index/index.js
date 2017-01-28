@@ -7,12 +7,21 @@ Page({
     ,points:[
       {
         name: '阿婆牛杂'
+        ,reporter: 'Amy'
+        ,comments:[{'a':1},{},{}]
+        ,create_time: '2017-01-01'
       }
       ,{
         name: '陈伯拉肠'
+        ,reporter: 'Bob'
+        ,comments:[{'a':1},{},{}]
+        ,create_time: '2017-01-01'
       }
       ,{
         name: '湿炒牛河'
+        ,reporter: 'Cute'
+        ,comments:[{'a':1},{},{}]
+        ,create_time: '2017-01-01'
       }
     ]
   },
