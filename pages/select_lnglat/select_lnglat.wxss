@@ -6,3 +6,12 @@
     width: 5em;
     margin-top: 10px;
 }
+
+.bold{
+    font-weight: 700;
+}
+
+.input{
+    width: 100%;
+    border: 1px solid lightgreen;
+}

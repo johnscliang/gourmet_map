@@ -16,6 +16,27 @@
 </view>
 
 <view hidden="{{show ? false : true}}">
-    <label>名称：</label><input />
-    <label>描述：</label><textarea />
+    <view class="center">
+        <view style="height:8px"></view>
+        <text>已添加{{pics_number}}/9张图片</text>
+        <progress />
+        <view style="padding: 10px">
+            <button type="primary">添加图片</button>
+            <view style="height:8px"></view>
+            <button type="primary">预览图片</button>
+        </view>
+    </view>
+
+    <view style="padding:10px">
+        <view style="height:8px"></view>
+        <text class="bold">这地方叫什么？</text>
+        <input maxlength="140" style="height:2em" class="input" />
+        <text class="bold">简单描述一下：</text>
+        <textarea maxlength="500" class="input" />
+    </view>
+
+    <view class="center">
+        <view style="height:8px"></view>
+        <button style="width:5em" type="primary">提交</button>
+    </view>
 </view>

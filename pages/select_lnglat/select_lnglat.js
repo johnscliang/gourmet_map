@@ -6,6 +6,8 @@ var combinePage = {
     data:{
       map_width: 380
       ,map_height: 380
+      //已添加的图片个数
+      ,pics_number: 0
     }
     //show current position
     ,onLoad: function(){
