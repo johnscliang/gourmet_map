@@ -8,6 +8,7 @@ Page({
     //show current position
     ,onLoad: function(){
     var that = this;
+    // 获取定位，并把位置标示出来
     app.getLocationInfo(function(locationInfo){
         console.log('map',locationInfo);
         that.setData({
@@ -27,6 +28,7 @@ Page({
     })
 
     //set the width and height
+    // 动态设置map的宽和高
     wx.getSystemInfo({
       success: function(res) {
         console.log('getSystemInfo');
@@ -50,7 +52,7 @@ Page({
     })
 
   }
-  //获取中间点的经纬度
+  //获取中间点的经纬度，并mark出来
   ,getLngLat: function(){
       var that = this;
       this.mapCtx = wx.createMapContext("map4select");
@@ -76,6 +78,7 @@ Page({
       })
   }
   ,regionchange(e) {
+    // 地图发生变化的时候，获取中间点，也就是用户选择的位置
       if(e.type == 'end'){
           this.getLngLat()
       }
