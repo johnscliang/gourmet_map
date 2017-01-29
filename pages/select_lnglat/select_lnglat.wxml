@@ -25,6 +25,11 @@
             <view style="height:8px"></view>
             <button type="primary">预览图片</button>
         </view>
+
+        <view wx:for="{{urls}}">
+            <view>{{item}}</view>
+        </view>
+
     </view>
 
     <view style="padding:10px">

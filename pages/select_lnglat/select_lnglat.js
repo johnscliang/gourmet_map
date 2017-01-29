@@ -1,5 +1,5 @@
 var app = getApp()
-
+var Bmob = require('../../utils/bmob.js');
 var add_gourmet = require('./add_gourmet.js');
 
 var combinePage = {
