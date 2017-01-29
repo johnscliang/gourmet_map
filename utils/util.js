@@ -18,4 +18,13 @@ function formatNumber(n) {
 
 module.exports = {
   formatTime: formatTime
+  ,showLoading: function(title){
+    wx.showToast({
+      title: title == undefined ? "加载中" : title
+      ,icon: 'loading'
+    })
+  }
+  ,hideLoading: function(){
+    wx.hideToast()
+  }
 }

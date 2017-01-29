@@ -19,7 +19,6 @@
     <view class="center">
         <view style="height:8px"></view>
         <text>已添加{{pics_number}}/9张图片</text>
-        <progress percent="{{upload_progress}}" />
         <view style="padding: 10px">
             <button type="primary" bindtap="add_pics">添加图片</button>
             <view style="height:8px"></view>

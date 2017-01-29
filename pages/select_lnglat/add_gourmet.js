@@ -1,4 +1,5 @@
 var Bmob = require('../../utils/bmob.js');
+var utils = require('../../utils/util.js');
 
 var urls = [];
 
@@ -26,8 +27,6 @@ module.exports = {
           var tempFilePaths = res.tempFilePaths;
           console.log('tempFilePaths', tempFilePaths);
           //
-          var count = 0;
-          var beishu = 100/tempFilePaths.length;
           if (tempFilePaths.length > 0) {
 
               // var name="1.jpg";//上传的图片的别名
@@ -37,31 +36,29 @@ module.exports = {
               // },function(error){
               //   console.log(error);
               // })
-            
             for(var i = 0; i< tempFilePaths.length; i++){
+                utils.showLoading("上传中···");
                 var name = i+".jpg";//上传的图片的别名
                 var file = new Bmob.File(name, [tempFilePaths[i]]);
                 console.log(name,tempFilePaths[i])
                 file.save().then(function (res) {
                   console.log('upload',res.url());
                   urls.push(res.url());
-                  count++;
-                  updatePrgress(count, beishu);
+                  updatePrgress();
                 }, function (error) {
                   console.log('upload',error);
-                  count++;
-                  updatePrgress(count, beishu);
+                  updatePrgress();
                 })
             }
 
           }
 
-          function updatePrgress(count, beishu){
+          function updatePrgress(){
               that.setData({
-                pics_number: count
-                ,upload_progress: (count+1) * beishu
+                pics_number: urls.length
                 ,urls: urls
               })
+              utils.hideLoading();
           }
         }
       })
