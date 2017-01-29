@@ -1,3 +1,5 @@
+require('utils/bmob_init.js');
+
 //app.js
 App({
   onLaunch: function () {
