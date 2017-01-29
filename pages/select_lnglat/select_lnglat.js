@@ -25,23 +25,30 @@ Page({
         })
     })
   }
-  //change
-  ,change: function(e){
-      console.log(e);
-      this.setData({
-          longitude: e.target.longitude
-          ,latitude: e.target.latitude
-          ,markers:[
-            {
-            id: 0
-            ,iconPath: "../../imgs/ic_position.png"
-            ,longitude: e.target.longitude
-            ,latitude: e.target.latitude
-            ,width: 30
-            ,height: 30
-            }
-          ]
-        })
+  //获取中间点的经纬度
+  ,getLngLat: function(){
+      var that = this;
+      this.mapCtx = wx.createMapContext("map4select");
+      this.mapCtx.getCenterLocation({
+        success: function(res){
+
+            that.setData({
+            longitude: res.longitude
+            ,latitude: res.latitude
+            ,markers:[
+              {
+              id: 0
+              ,iconPath: "../../imgs/ic_position.png"
+              ,longitude: res.longitude
+              ,latitude: res.latitude
+              ,width: 30
+              ,height: 30
+              }
+            ]
+          })
+
+        }
+      })
   }
   ,regionchange(e) {
       console.log(e)

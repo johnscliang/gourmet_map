@@ -5,10 +5,11 @@
     ,"pages/select_lnglat/select_lnglat"
   ]
   ,"window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#000000",
-    "navigationBarTitleText": "美食地图",
-    "navigationBarTextStyle":"white"
+    "backgroundTextStyle":"light"
+    ,"navigationBarBackgroundColor": "#000000"
+    ,"navigationBarTitleText": "美食地图"
+    ,"navigationBarTextStyle":"white"
+    ,"enablePullDownRefresh": false
   }
   ,"debug": true
 }

@@ -1,9 +1,9 @@
-<button type="primary" bindtap="change">confirm</button>
 
 <map id="map4select"
- bindtap="change"
  longitude="{{longitude}}" latitude="{{latitude}}" 
  markers="{{markers}}"
  scale="20" 
  controls="{{controls}}">
 </map>
+
+<button type="primary" bindtap="getLngLat">确认</button>
