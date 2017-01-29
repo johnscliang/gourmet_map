@@ -19,7 +19,7 @@
     <view class="center">
         <view style="height:8px"></view>
         <text>已添加{{pics_number}}/9张图片</text>
-        <progress percent="{{upload_progress}}" active />
+        <progress percent="{{upload_progress}}" />
         <view style="padding: 10px">
             <button type="primary" bindtap="add_pics">添加图片</button>
             <view style="height:8px"></view>
@@ -27,7 +27,7 @@
         </view>
 
         <view wx:for="{{urls}}">
-            <view>{{item}}</view>
+            <image src="{{item}}"></image>
         </view>
 
     </view>
@@ -43,5 +43,6 @@
     <view class="center">
         <view style="height:8px"></view>
         <button style="width:5em" type="primary">提交</button>
+        <view style="height:8em"></view>
     </view>
 </view>
