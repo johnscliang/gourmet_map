@@ -1,5 +1,6 @@
 
 <map id="map4select"
+ hidden="{{hide ? true : false}}"
  longitude="{{longitude}}" latitude="{{latitude}}" 
  markers="{{markers}}"
  scale="20" 
@@ -8,12 +9,13 @@
  controls="{{controls}}">
 </map>
 
-<view class="center">
+<view hidden="{{hide ? true : false}}" class="center">
+    <view style="height:8px"></view>
     <text>移动地图中心修改位置</text>
     <button id="btn_complete" type="primary" bindtap="editPos">完成</button>
 </view>
 
-<view>
+<view hidden="{{show ? false : true}}">
     <label>名称：</label><input />
     <label>描述：</label><textarea />
 </view>
