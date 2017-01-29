@@ -2,7 +2,8 @@ var app = getApp()
 
 Page({
     data:{
-       
+      map_width: 380
+      ,map_height: 380
     }
     //show current position
     ,onLoad: function(){
@@ -24,6 +25,30 @@ Page({
           ]
         })
     })
+
+    //set the width and height
+    wx.getSystemInfo({
+      success: function(res) {
+        console.log('getSystemInfo');
+        console.log(res.windowWidth);
+        that.setData({
+           map_width: res.windowWidth
+          ,map_height: res.windowWidth
+          ,controls: [{
+            id: 1,
+            iconPath: '../../imgs/ic_location.png',
+            position: {
+              left: res.windowWidth/2 - 8,
+              top: res.windowWidth/2 - 16,
+              width: 30,
+              height: 30
+            },
+            clickable: true
+          }]
+        })
+      }
+    })
+
   }
   //获取中间点的经纬度
   ,getLngLat: function(){
@@ -51,7 +76,9 @@ Page({
       })
   }
   ,regionchange(e) {
-      console.log(e)
+      if(e.type == 'end'){
+          this.getLngLat()
+      }
   }
   ,markertap(e) {
     console.log(e)

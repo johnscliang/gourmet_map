@@ -3,7 +3,7 @@
  longitude="{{longitude}}" latitude="{{latitude}}" 
  markers="{{markers}}"
  scale="20" 
+ style="width:{{map_width}}px;height:{{map_height}}px"
+ bindregionchange="regionchange"
  controls="{{controls}}">
 </map>
-
-<button type="primary" bindtap="getLngLat">确认</button>
