@@ -1,6 +1,6 @@
 var app = getApp()
 
-var edit_position = require('./edit_position.js');
+var add_gourmet = require('./add_gourmet.js');
 
 var combinePage = {
     data:{
@@ -8,6 +8,7 @@ var combinePage = {
       ,map_height: 380
       //已添加的图片个数
       ,pics_number: 0
+      ,upload_progress: 0
     }
     //show current position
     ,onLoad: function(){
@@ -90,6 +91,6 @@ var combinePage = {
 }
 
 //拓展
-Object.extend(combinePage, edit_position);
+Object.extend(combinePage, add_gourmet);
 //
 Page(combinePage);
