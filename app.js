@@ -51,3 +51,18 @@ App({
     ,locationInfo: null
   }
 })
+
+//拓展对象
+Object.extend = function () {
+  var args = arguments;
+  if (args.length < 2) return;
+  var firstObj = args[0];
+  console.log('first',firstObj);
+  for(var i = 1; i < args.length; i++){
+      for(var x in args[i]){
+          firstObj[x] = args[i][x];
+      }
+  }
+  console.log('first',firstObj);
+  return firstObj;
+}

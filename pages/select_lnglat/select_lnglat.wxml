@@ -7,3 +7,13 @@
  bindregionchange="regionchange"
  controls="{{controls}}">
 </map>
+
+<view class="center">
+    <text>移动地图中心修改位置</text>
+    <button id="btn_complete" type="primary" bindtap="editPos">完成</button>
+</view>
+
+<view>
+    <label>名称：</label><input />
+    <label>描述：</label><textarea />
+</view>

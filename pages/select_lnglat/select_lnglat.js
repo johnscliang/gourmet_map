@@ -1,6 +1,8 @@
 var app = getApp()
 
-Page({
+var edit_position = require('./edit_position.js');
+
+var combinePage = {
     data:{
       map_width: 380
       ,map_height: 380
@@ -83,7 +85,9 @@ Page({
           this.getLngLat()
       }
   }
-  ,markertap(e) {
-    console.log(e)
-  }
-})
+}
+
+//拓展
+Object.extend(combinePage, edit_position);
+//
+Page(combinePage);

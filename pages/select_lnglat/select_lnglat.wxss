@@ -1,0 +1,8 @@
+.center{
+    text-align: center;
+}
+
+#btn_complete{
+    width: 5em;
+    margin-top: 10px;
+}
