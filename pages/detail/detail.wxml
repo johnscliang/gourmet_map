@@ -29,9 +29,9 @@
     <view style="height:10px"></view>
     <button bindtap="addComment">提交评论</button>
 
-    <view class="comment" wx:for="{{gourmet.comments}}">
-    {{index+1}} 楼<image id="avatar" src="{{item.avatar}}"></image>
-    <text>：{{item.comment}}</text>
+    <view class="comment_layout" wx:for="{{gourmet.comments}}">
+    {{gourmet.comments.length - index}} 楼 <image id="avatar" src="{{item.avatar}}"></image>
+    <text class="comment"> {{item.comment}}</text>
     </view>
     
 </view>

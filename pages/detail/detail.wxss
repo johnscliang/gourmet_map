@@ -13,17 +13,24 @@
 
 #avatar{
     vertical-align: middle;
-    width: 3em;
-    height: 3em;
+    width: 2.5em;
+    height: 2.5em;
+    border: 1px solid lawngreen;
+    border-radius: 50%;
 }
 
 #nickname{
     vertical-align: middle;
 }
 
-.comment{
+.comment_layout{
     padding-top: 5px;
     padding-bottom: 5px;
+}
+
+.comment{
+    font-size: 0.8em;
+    color: gray;
 }
 
 .comment_area{
