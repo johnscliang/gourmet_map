@@ -1,6 +1,7 @@
 var app = getApp()
 var Bmob = require('../../utils/bmob.js');
 var add_gourmet = require('./add_gourmet.js');
+var CS = require('../../utils/CS.js');
 
 var combinePage = {
     data:{
@@ -62,15 +63,28 @@ var combinePage = {
       this.mapCtx.getCenterLocation({
         success: function(res){
 
+            var geopoint = {
+              longitude: res.longitude
+              ,latitude: res.latitude
+            }
+            //存存
+            try {
+              console.log('cunccccc',CS.KEY_GEOPOINT)
+              console.log('vvvvvvvvv',JSON.stringify(geopoint))
+                wx.setStorageSync(CS.KEY_GEOPOINT, JSON.stringify(geopoint))
+            } catch (e) {
+                console.log('e',e)
+            }
+
             that.setData({
-            longitude: res.longitude
-            ,latitude: res.latitude
+            longitude: geopoint.longitude
+            ,latitude: geopoint.latitude
             ,markers:[
               {
               id: 0
               ,iconPath: "../../imgs/ic_position.png"
-              ,longitude: res.longitude
-              ,latitude: res.latitude
+              ,longitude: geopoint.longitude
+              ,latitude: geopoint.latitude
               ,width: 30
               ,height: 30
               }

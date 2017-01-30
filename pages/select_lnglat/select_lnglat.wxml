@@ -45,7 +45,7 @@
 
     <view class="center">
         <view style="height:8px"></view>
-        <button style="width:5em" type="primary">提交</button>
+        <button bindtap="add_gourmet" style="width:5em" type="primary">提交</button>
         <view style="height:8em"></view>
     </view>
 </view>

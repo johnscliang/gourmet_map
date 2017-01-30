@@ -1,9 +1,22 @@
 var Bmob = require('../../utils/bmob.js');
 var utils = require('../../utils/util.js');
+var CS = require('../../utils/CS.js');
 
+var gourmet_title = "";
+var gourmet_desc = "";
 var urls = [];
 var headurl = "";//
 var headurlIndex = 0;
+var geopoint = null;
+wx.getStorage({
+  key: CS.KEY_GEOPOINT,
+  success: function(res) {
+      console.log(CS.KEY_GEOPOINT,res)
+      if(res.data){
+        geopoint = JSON.parse(res.data) 
+      }
+  } 
+})
 
 module.exports = {
   editPos: function(){
@@ -89,6 +102,16 @@ module.exports = {
     this.setData({
       headurl: headurl
     })
+  }
+
+  // 新增一个美食点
+  ,add_gourmet: function(){
+      console.log("新增美食点");
+      console.log('geopoint',geopoint);
+      console.log('urls',urls);
+      console.log('headurl',headurl);
+      console.log('gourmet_title',gourmet_title);
+      console.log('gourmet_desc',gourmet_desc);
   }
 
 }
