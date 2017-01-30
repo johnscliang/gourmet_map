@@ -1,4 +1,6 @@
 var app = getApp();
+var Bmob = require('../../utils/bmob.js');
+var utils = require('../../utils/util.js');
 
 var gourmet = null;
 
@@ -40,11 +42,52 @@ Page({
   }
 
   ,addComment: function(e){
-      console.log(this.data.textarea_content);
-      //新增成功之后，清空输入框
-      this.setData({
-        textarea_content: ""
+      var that = this;
+      var commentStr = this.data.textarea_content;
+      console.log(commentStr);
+      if(commentStr == "" || commentStr == null){
+          return utils.showModal('错误','请输入评论')
+      }
+      app.getUserInfo(userinfo=>{
+        //
+        utils.showLoading("loading")
+        //
+        var Gourmet = Bmob.Object.extend("gourmet");
+        var query = new Bmob.Query(Gourmet);
+        // 这个 id 是要修改条目的 id，你在生成这个存储并成功时可以获取到，请看前面的文档
+        query.get(gourmet.objectId, {
+            success: function(result) {
+              console.log(gourmet.objectId,result)
+              var oldcomments = result.get("comments") || [];
+              console.log('oldcomments',oldcomments)
+              var comment = {
+                nickname: userinfo.nickName
+                ,comment: commentStr
+                ,avatar: userinfo.avatarUrl
+                ,create_time: utils.getNowTimestamp()
+              }
+              oldcomments.unshift(comment);
+              if(oldcomments.length > 300){
+                  oldcomments.pop()
+              }
+              result.set('comments', oldcomments);
+              result.save();
+              that.setData({
+                //新增成功之后，清空输入框
+                textarea_content: ""
+                //设置新的
+                ,gourmet: result
+              });
+              utils.hideLoading();
+              // The object was retrieved successfully.
+            },
+            error: function(object, error) {
+                utils.hideLoading()
+            }
+        });
+        
       })
+
   }
 
   ,onShareAppMessage: function () {
