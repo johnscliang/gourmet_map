@@ -1,5 +1,8 @@
+<view style="padding:10px">
+  <view class="title">{{gourmet.title}}</view>
+</view>
+
 <view class="center">
-<view style="height:10px"></view>
 
 <swiper indicator-dots="{{indicatorDots}}"
   bindtap="preview"
@@ -14,9 +17,21 @@
 </view>
 
 <view style="padding:10px">
-
-    <view class="title">{{gourmet.title}}</view>
-
     <view class="description">{{gourmet.description}}</view>
+</view>
 
+<!--comments-->
+<view style="padding:10px">
+
+    <textarea placeholder="输入你的评论" auto-height="true" maxlength="500" 
+     bindinput="inputComment"
+    class="comment_area" value="{{textarea_content}}" />
+    <view style="height:10px"></view>
+    <button bindtap="addComment">提交评论</button>
+
+    <view class="comment" wx:for="{{gourmet.comments}}">
+    {{index+1}} 楼<image id="avatar" src="{{gourmet.user_avatar}}"></image>
+    <text>：{{item.comment}}</text>
+    </view>
+    
 </view>

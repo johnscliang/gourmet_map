@@ -24,12 +24,14 @@
              <view style="height:8px"></view>
         </view>
 
-        <view wx:for="{{urls}}">
-            <image bindtap="preview" mode="aspectFill" style="width:{{img_width}}px;height:{{img_height}}px" class="img" src="{{item}}"></image>
+        <view style="text-align:left">
+            <image wx:for="{{urls}}" bindtap="preview" mode="aspectFill" style="width:{{img_width}}px;height:{{img_height}}px" class="thumbnail" src="{{item}}"></image>
         </view>
 
         <view hidden="{{show_headurl ? false:true}}">
-            <text class="bold">选一张作为首页图（点击图片切换）：</text>
+            <view>
+                <text class="bold">选一张作为首页图（<text class="red">点击图片切换</text>）：</text>
+            </view>
             <image bindload="loadPicOk" bindtap="checkout" mode="aspectFill" src="{{headurl}}"></image>
         </view>
 

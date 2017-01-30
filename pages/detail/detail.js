@@ -32,4 +32,26 @@ Page({
         })
       }
   }
+
+  ,inputComment:function(e){
+       this.setData({
+         textarea_content:e.detail.value
+       })
+  }
+
+  ,addComment: function(e){
+      console.log(this.data.textarea_content);
+      //新增成功之后，清空输入框
+      this.setData({
+        textarea_content: ""
+      })
+  }
+
+  ,onShareAppMessage: function () {
+    return {
+      title: gourmet.title,
+      desc: gourmet.description,
+      path: '/pages/detail/detail?id='+gourmet.objectId
+    }
+  }
 })

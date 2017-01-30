@@ -41,6 +41,9 @@ var combinePage = {
       that.setData({
            map_width: width
           ,map_height: width
+          //设置预览小图的大小
+          ,img_width: width/3 - 25
+          ,img_height: width/3 -25
           ,controls: [{
             id: 1,
             iconPath: '../../imgs/ic_location.png',

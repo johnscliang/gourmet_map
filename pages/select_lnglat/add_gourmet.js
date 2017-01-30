@@ -85,8 +85,9 @@ module.exports = {
                 ,show_headurl: headurl == "" ? false : true
               })
               setTimeout(function(){
-                utils.hideLoading()
-              },4000)
+                utils.hideLoading();
+                utils.showSuccess("请稍等一下就加载出来");
+              },2000)
           }
         }
       })

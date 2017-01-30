@@ -10,13 +10,15 @@
 .bold{
     font-weight: 700;
 }
+.red{
+    color: red;
+}
 
 .input{
     width: 100%;
     border: 1px solid lightgreen;
 }
 
-.img{
-    width: 100%;
-    height: 3em;
+.thumbnail{
+    margin: 2px;
 }

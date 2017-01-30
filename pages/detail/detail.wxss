@@ -10,3 +10,23 @@
 .description{
     color: gray;
 }
+
+#avatar{
+    vertical-align: middle;
+    width: 3em;
+    height: 3em;
+}
+
+#nickname{
+    vertical-align: middle;
+}
+
+.comment{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.comment_area{
+    width: 100%;
+    border: 1px solid lightgreen;
+}
