@@ -103,4 +103,12 @@ Page({
     // Do something when page reach bottom.
   }
 
+  ,gotoDetail: function(e){
+    var id = e.target.dataset.id;
+    console.log('gotoDetail',e.target.dataset);
+    wx.navigateTo({
+      url: '../detail/detail?id='+id
+    })
+  }
+
 })

@@ -1,0 +1,13 @@
+<view class="center">
+
+<swiper indicator-dots="{{indicatorDots}}"
+  bindtap="preview"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block wx:for="{{urls}}">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" width="{{img_width}}" height="{{img_height}}"/>
+    </swiper-item>
+  </block>
+</swiper>
+
+</view>

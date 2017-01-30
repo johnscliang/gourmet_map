@@ -18,7 +18,8 @@
     <text class="itemtext_title">{{item.title}}</text>
   </view>
 
-  <image class="img" mode="aspectFill" src="{{item.head_url}}"></image>
+  <image bindtap="gotoDetail" data-id="{{item.objectId}}" class="img" mode="aspectFill"
+   src="{{item.head_url}}"></image>
 
   <view class="footer">
     <text class="itemtext_footer">{{item.user_nickname}}  </text>

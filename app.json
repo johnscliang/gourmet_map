@@ -3,6 +3,7 @@
     "pages/index/index"
     ,"pages/map/map"
     ,"pages/select_lnglat/select_lnglat"
+    ,"pages/detail/detail"
   ]
   ,"window":{
     "backgroundTextStyle":"light"
