@@ -1,57 +1,41 @@
 
-<map id="map4select"
- hidden="{{hide ? true : false}}"
- longitude="{{longitude}}" latitude="{{latitude}}" 
- markers="{{markers}}"
- scale="20" 
- style="width:{{map_width}}px;height:{{map_height}}px"
- bindregionchange="regionchange"
- controls="{{controls}}">
-</map>
-
-<view hidden="{{hide ? true : false}}" class="center">
+<view style="padding:10px">
+    <button bindtap="chooseLocation" type="primary">重新选择位置</button>
     <view style="height:8px"></view>
-    <text>移动地图中心修改位置</text>
-    <button id="btn_complete" type="primary" bindtap="editPos">完成</button>
+    <text class="bold">地址：</text>
+    <input bindinput="inputAddress" value="{{address}}" maxlength="140" style="height:2em" class="input" />
+    <text class="bold">美食点名称名称：</text>
+    <input bindinput="inputTitle" value="{{title}}" maxlength="140" style="height:2em" class="input" />
+    <view style="height:5px"/>
+    <text class="bold">简单描述一下：</text>
+    <textarea bindinput="inputDesc" maxlength="500" class="input" />
 </view>
 
-<view hidden="{{show ? false : true}}">
-    <view style="padding: 10px" class="center">
-        <view style="height:8px"></view>
-        <text>已添加{{pics_number}}/9张图片</text>
-        <view>
-            <button type="primary" bindtap="add_pics">添加图片</button>
-             <view style="height:8px"></view>
-        </view>
 
-        <view style="text-align:left">
-            <image wx:for="{{urls}}" bindtap="preview" mode="aspectFill" style="width:{{img_width}}px;height:{{img_height}}px" class="thumbnail" src="{{item}}"></image>
-        </view>
+<view style="padding: 10px" class="center">
 
-        <view hidden="{{show_headurl ? false:true}}">
-            <view>
-                <text class="bold">选一张作为首页图（<text class="red">点击图片切换</text>）：</text>
-            </view>
-            <image bindload="loadPicOk" bindtap="checkout" mode="aspectFill" src="{{headurl}}"></image>
-        </view>
-
+    <view style="height:8px"/>
+    <text>已添加{{urls.length}}/9张图片</text>
+    <view>
+        <button type="primary" bindtap="add_pics">添加图片</button>
+            <view style="height:8px"></view>
     </view>
 
-    <view hidden="{{show_submit ? false:true}}">
+    <view style="text-align:left">
+            <image wx:for="{{urls}}" bindtap="preview" mode="aspectFill" style="width:{{img_width}}px;height:{{img_height}}px" class="thumbnail" src="{{item}}"></image>
+    </view>
 
-        <view style="padding:0px 10px">
-        <view style="height:8px"></view>
-        <text class="bold">这地方叫什么？</text>
-        <input bindinput="confirmTitle" maxlength="140" style="height:2em" class="input" />
-        <text class="bold">简单描述一下：</text>
-        <textarea bindinput="confirmDesc" maxlength="500" class="input" />
+    <view hidden="{{show_headurl ? false:true}}">
+        <view>
+            <text class="bold">选一张作为首页图（<text class="red">点击图片切换</text>）：</text>
+        </view>
+        <image bindload="loadPicOk" bindtap="checkout" mode="aspectFill" src="{{headurl}}"></image>
     </view>
 
     <view class="center">
-        <view style="height:8px"></view>
+        <view style="height:8px"/>
         <button bindtap="add_gourmet" style="width:5em" type="primary">提交</button>
-        <view style="height:12em"></view>
+        <view style="height:12em"/>
     </view>
 
-    </view>
 </view>
