@@ -16,22 +16,26 @@
 </view>
 
 <view hidden="{{show ? false : true}}">
-    <view class="center">
+    <view style="padding: 10px" class="center">
         <view style="height:8px"></view>
         <text>已添加{{pics_number}}/9张图片</text>
-        <view style="padding: 10px">
+        <view>
             <button type="primary" bindtap="add_pics">添加图片</button>
-            <view style="height:8px"></view>
-            <button type="primary">预览图片</button>
+             <view style="height:8px"></view>
         </view>
 
         <view wx:for="{{urls}}">
-            <image src="{{item}}"></image>
+            <image bindtap="preview" mode="aspectFill" style="width:{{img_width}}px;height:{{img_height}}px" class="img" src="{{item}}"></image>
+        </view>
+
+        <view hidden="{{show_headurl ? false:true}}">
+            <text class="bold">选一张作为首页图（点击图片切换）：</text>
+            <image bindtap="checkout" mode="aspectFill" src="{{headurl}}"></image>
         </view>
 
     </view>
 
-    <view style="padding:10px">
+    <view style="padding:0px 10px">
         <view style="height:8px"></view>
         <text class="bold">这地方叫什么？</text>
         <input maxlength="140" style="height:2em" class="input" />

@@ -42,6 +42,7 @@ App({
         })
     }
   }
+  ,getSystemInfo:getSystemInfo
   
   ,globalData:{
     userInfo:null
@@ -99,6 +100,15 @@ function getUserInfoByNetwork(that,cb){
     }
   }
 })
+}
+
+//获取屏幕信息
+function getSystemInfo(cb){
+  wx.getSystemInfo({
+      success: function(res) {
+        cb(res.windowWidth, res.windowHeight)
+      }
+    })
 }
 
 //拓展对象

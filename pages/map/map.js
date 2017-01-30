@@ -52,14 +52,11 @@ Page({
         })
     })
     //设置地图大小
-    wx.getSystemInfo({
-      success: function(res) {
-        that.setData({
-           map_width: res.windowWidth
-          //,map_height: res.windowHeight
-          ,map_height: res.windowWidth
+    app.getSystemInfo(width, height => {
+      that.setData({
+           map_width: width
+          ,map_height: height
         })
-      }
     })
   }
 })

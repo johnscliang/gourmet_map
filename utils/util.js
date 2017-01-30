@@ -27,4 +27,11 @@ module.exports = {
   ,hideLoading: function(){
     wx.hideToast()
   }
+  ,showSuccess: function(title){
+    wx.showToast({
+      title: title,
+      icon: 'success',
+      duration: 2000
+    })
+  }
 }

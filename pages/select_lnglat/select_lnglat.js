@@ -9,6 +9,7 @@ var combinePage = {
       //已添加的图片个数
       ,pics_number: 0
       ,upload_progress: 0
+      ,urls:[]
     }
     //show current position
     ,onLoad: function(){
@@ -34,26 +35,23 @@ var combinePage = {
 
     //set the width and height
     // 动态设置map的宽和高
-    wx.getSystemInfo({
-      success: function(res) {
-        console.log('getSystemInfo');
-        console.log(res.windowWidth);
-        that.setData({
-           map_width: res.windowWidth
-          ,map_height: res.windowWidth
+    app.getSystemInfo((width, height) => {
+      console.log('select_lnglat',width, height);
+      that.setData({
+           map_width: width
+          ,map_height: width
           ,controls: [{
             id: 1,
             iconPath: '../../imgs/ic_location.png',
             position: {
-              left: res.windowWidth/2 - 8,
-              top: res.windowWidth/2 - 16,
+              left: width/2 - 8,
+              top: width/2 - 16,
               width: 30,
               height: 30
             },
             clickable: true
           }]
         })
-      }
     })
 
   }
