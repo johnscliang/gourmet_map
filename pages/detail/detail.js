@@ -16,9 +16,9 @@ Page({
       console.log(gourmet.urls);
       app.getSystemInfo((width, height) => {
       that.setData({
-        urls: gourmet.urls
-        ,img_width: width
+        img_width: width
         ,img_height: width * 2/3
+        ,gourmet: gourmet 
         })
     })
 
