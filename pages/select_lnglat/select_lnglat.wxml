@@ -30,12 +30,14 @@
 
         <view hidden="{{show_headurl ? false:true}}">
             <text class="bold">选一张作为首页图（点击图片切换）：</text>
-            <image bindtap="checkout" mode="aspectFill" src="{{headurl}}"></image>
+            <image bindload="loadPicOk" bindtap="checkout" mode="aspectFill" src="{{headurl}}"></image>
         </view>
 
     </view>
 
-    <view style="padding:0px 10px">
+    <view hidden="{{show_submit ? false:true}}">
+
+        <view style="padding:0px 10px">
         <view style="height:8px"></view>
         <text class="bold">这地方叫什么？</text>
         <input bindinput="confirmTitle" maxlength="140" style="height:2em" class="input" />
@@ -46,6 +48,8 @@
     <view class="center">
         <view style="height:8px"></view>
         <button bindtap="add_gourmet" style="width:5em" type="primary">提交</button>
-        <view style="height:8em"></view>
+        <view style="height:12em"></view>
+    </view>
+
     </view>
 </view>

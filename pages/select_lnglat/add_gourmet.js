@@ -26,7 +26,9 @@ module.exports = {
         geopoint = value;
         //
         this.setData({
+          //隐藏地图
           "hide": true
+          //显示输入框
           ,"show": true
         })
       });   
@@ -107,6 +109,14 @@ module.exports = {
     this.setData({
       headurl: headurl
     })
+  }
+
+  //加载至少一张图片OK
+  ,loadPicOk: function(e){
+      this.setData({
+          //显示输入框
+          "show_submit": true
+        })
   }
 
   //
