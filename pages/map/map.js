@@ -17,9 +17,11 @@ Page({
   }
   ,markertap(e) {
     console.log(e);
-    
+    //
+    var gourmet = app.globalData.gourmetsMap[e.markerId];
     this.setData({
-      gourmet: JSON.stringify(app.globalData.gourmetsMap[e.markerId])
+      gourmet: gourmet
+      ,show: true
     })
   }
   ,controltap(e) {
@@ -59,5 +61,13 @@ Page({
           markers: markers
         })
     }
+  }
+
+  //
+  ,gotoDetail: function(e){
+    var id = e.target.dataset.id;
+    wx.navigateTo({
+      url: '../detail/detail?id='+id
+    })
   }
 })

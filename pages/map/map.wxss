@@ -1,0 +1,27 @@
+.img{
+    width: 100%;
+    height: 12em;
+}
+
+.footer{
+    line-height: 5em;
+}
+
+#avatar{
+    vertical-align: middle;
+    width: 3em;
+    height: 3em;
+}
+
+#nickname{
+    vertical-align: middle;
+}
+
+.title{
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.tips{
+    color: dodgerblue
+}
