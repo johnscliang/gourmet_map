@@ -1,4 +1,4 @@
-var app = getApp()
+var app = getApp();
 var Bmob = require('../../utils/bmob.js');
 var add_gourmet = require('./add_gourmet.js');
 var CS = require('../../utils/CS.js');
@@ -68,13 +68,10 @@ var combinePage = {
               ,latitude: res.latitude
             }
             //存存
-            try {
-              console.log('cunccccc',CS.KEY_GEOPOINT)
-              console.log('vvvvvvvvv',JSON.stringify(geopoint))
-                wx.setStorageSync(CS.KEY_GEOPOINT, JSON.stringify(geopoint))
-            } catch (e) {
-                console.log('e',e)
-            }
+            wx.setStorage({
+              key: CS.KEY_GEOPOINT
+              ,data: geopoint
+            })
 
             that.setData({
             longitude: geopoint.longitude

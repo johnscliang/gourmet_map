@@ -8,15 +8,6 @@ var urls = [];
 var headurl = "";//
 var headurlIndex = 0;
 var geopoint = null;
-wx.getStorage({
-  key: CS.KEY_GEOPOINT,
-  success: function(res) {
-      console.log(CS.KEY_GEOPOINT,res)
-      if(res.data){
-        geopoint = JSON.parse(res.data) 
-      }
-  } 
-})
 
 module.exports = {
   editPos: function(){
@@ -104,8 +95,25 @@ module.exports = {
     })
   }
 
+  //
+  ,confirmTitle: function(e){
+      console.log(e.detail);
+      gourmet_title = e.detail.value
+  }
+  ,confirmDesc: function(e){
+      console.log(e.detail);
+       gourmet_desc = e.detail.value
+  }
+
   // 新增一个美食点
   ,add_gourmet: function(){
+    try {
+      var value = wx.getStorageSync(CS.KEY_GEOPOINT);
+      if (value) {
+          geopoint = JSON.parse(value)
+      }
+    } catch (e) {}
+
       console.log("新增美食点");
       console.log('geopoint',geopoint);
       console.log('urls',urls);

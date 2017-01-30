@@ -38,9 +38,9 @@
     <view style="padding:0px 10px">
         <view style="height:8px"></view>
         <text class="bold">这地方叫什么？</text>
-        <input maxlength="140" style="height:2em" class="input" />
+        <input bindinput="confirmTitle" maxlength="140" style="height:2em" class="input" />
         <text class="bold">简单描述一下：</text>
-        <textarea maxlength="500" class="input" />
+        <textarea bindinput="confirmDesc" maxlength="500" class="input" />
     </view>
 
     <view class="center">
