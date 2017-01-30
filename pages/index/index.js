@@ -24,14 +24,21 @@ function getGourmet(cb){
         // 创建查询
         var query = new Bmob.Query(Gourmet);
         // location附近的位置
-        // query.near("location", point);
+        //query.near("location", point);
         query.withinGeoBox("location", southwestOfSF, northeastOfSF);
+        //query.withinKilometers("location", point, 800);
         // 返回10个地点数据
         query.limit(50);
         // 查询
         query.find({
           success: function(gourmets) {
-              cb(gourmets);
+              var jsonArray = JSON.parse(JSON.stringify(gourmets));
+              app.globalData.gourmets = jsonArray;
+              for(var x in jsonArray){
+                  app.globalData.gourmetsMap[jsonArray[x].objectId] = jsonArray[x];
+              }
+              //
+              cb(app.globalData.gourmets);
           }
         });
     })
@@ -44,6 +51,9 @@ Page({
   }
   //跳转到地图
   ,showMap: function() {
+    if(app.globalData.gourmets.length == 0){
+        // 没有点的情况
+    }
     wx.navigateTo({
       url: '../map/map'
     })

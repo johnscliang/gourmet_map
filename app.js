@@ -47,6 +47,8 @@ App({
   ,globalData:{
     userInfo:null
     ,locationInfo: null
+    ,gourmets: []
+    ,gourmetsMap:{}
   }
 })
 
