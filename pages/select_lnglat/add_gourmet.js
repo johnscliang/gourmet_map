@@ -21,7 +21,7 @@ module.exports = {
     }
     var that = this;
       wx.chooseImage({
-        count: 9, // 默认9
+        count: 9 - urls.length, // 默认9
         sizeType: ['compressed'],
         sourceType: ['album', 'camera'],
         success: function (res) {
