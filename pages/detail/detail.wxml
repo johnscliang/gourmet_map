@@ -35,3 +35,8 @@
     </view>
     
 </view>
+
+<view bindtap="openLocation" id="openLocation">
+    <image id="img_openlocation" src="../../imgs/ic_map.png"></image>
+    <text style="vertical-align: middle">打开位置</text>
+</view>

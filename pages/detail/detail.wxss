@@ -37,3 +37,25 @@
     width: 100%;
     border: 1px solid lightgreen;
 }
+
+#img_openlocation{
+    width: 1.2em;
+    height: 1.2em;
+    vertical-align: middle;
+}
+
+#openLocation{
+    padding: 3px 10px;
+    line-height: 1.8em;
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    color: white;
+    background-color: limegreen;
+    box-shadow: 0 0 3px darkgreen;
+    border-radius: 5px;
+}
+
+#openLocation:active{
+    background-color: darkgreen;
+}

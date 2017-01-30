@@ -90,6 +90,14 @@ Page({
 
   }
 
+  ,openLocation: function(){
+      wx.openLocation({
+        latitude: gourmet.location.latitude,
+        longitude: gourmet.location.longitude,
+        scale: 28
+      })
+  }
+
   ,onShareAppMessage: function () {
     return {
       title: gourmet.title,
