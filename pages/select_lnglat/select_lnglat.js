@@ -58,6 +58,7 @@ var combinePage = {
   }
   //获取中间点的经纬度，并mark出来
   ,getLngLat: function(){
+      console.log('getlngLat');
       var that = this;
       this.mapCtx = wx.createMapContext("map4select");
       this.mapCtx.getCenterLocation({
@@ -93,6 +94,7 @@ var combinePage = {
   }
   ,regionchange(e) {
     // 地图发生变化的时候，获取中间点，也就是用户选择的位置
+    console.log(e);
       if(e.type == 'end'){
           this.getLngLat()
       }

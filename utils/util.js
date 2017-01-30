@@ -34,4 +34,16 @@ module.exports = {
       duration: 2000
     })
   }
+  ,showModal: function(title,content,cb){
+    wx.showModal({
+      title: title,
+      content: content == undefined ? '':content,
+      showCancel: false,
+      success: function(res) {
+        if(cb){
+            cb(res)
+        }
+      }
+    })
+  }
 }

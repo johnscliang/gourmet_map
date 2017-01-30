@@ -1,3 +1,4 @@
+var app = getApp();
 var Bmob = require('../../utils/bmob.js');
 var utils = require('../../utils/util.js');
 var CS = require('../../utils/CS.js');
@@ -11,16 +12,26 @@ var geopoint = null;
 
 module.exports = {
   editPos: function(){
-      console.log('editPos')
-      this.setData({
-        "hide": true
-        ,"show": true
-      })
+      console.log('editPos');
+      this.getLngLat();
+      try {
+        var value = wx.getStorageSync(CS.KEY_GEOPOINT);
+        console.log('value',value);
+        console.log('value type', typeof value);
+        if (value) {
+            geopoint = value;
+            //
+            this.setData({
+              "hide": true
+              ,"show": true
+            })
+        }
+      } catch (e) {}
   }
   //add pictures
   ,add_pics:function(){
     if(urls.length == 9){
-      utils.showSuccess("最多添加9张图片")
+      utils.showModal('错误','最多添加9张图片')
       return;
     }
     var that = this;
@@ -43,7 +54,7 @@ module.exports = {
               //   console.log(error);
               // })
             for(var i = 0; i< tempFilePaths.length; i++){
-                utils.showLoading("上传中···");
+                utils.showLoading("上传中");
                 console.log("uploading...")
                 var name = i+".jpg";//上传的图片的别名
                 var file = new Bmob.File(name, [tempFilePaths[i]]);
@@ -107,19 +118,53 @@ module.exports = {
 
   // 新增一个美食点
   ,add_gourmet: function(){
-    try {
-      var value = wx.getStorageSync(CS.KEY_GEOPOINT);
-      if (value) {
-          geopoint = JSON.parse(value)
-      }
-    } catch (e) {}
-
+    
       console.log("新增美食点");
       console.log('geopoint',geopoint);
       console.log('urls',urls);
       console.log('headurl',headurl);
       console.log('gourmet_title',gourmet_title);
       console.log('gourmet_desc',gourmet_desc);
+      // 检查参数
+      // if(urls.length == 0){
+      //     return utils.showModal('错误','至少上传一张图片')
+      // }
+      if(gourmet_title === ""){
+          return utils.showModal('错误','请输入美食点名称')
+      }
+
+      app.getUserInfo(userinfo=>{
+        // console.log(userinfo)
+        var Gourmet = Bmob.Object.extend("gourmet");
+        var gourmet = new Gourmet();
+        gourmet.set("user_nickname", userinfo.nickName);
+        gourmet.set("description", gourmet_desc);
+        gourmet.set("head_url", headurl);
+        // var location = geopoint.longitude+','+geopoint.latitude;
+        var location = new Bmob.GeoPoint({latitude: geopoint.latitude, longitude: geopoint.longitude});
+        gourmet.set("location", location);
+        gourmet.set("openid", userinfo.openid);
+        gourmet.set("urls", urls);
+        gourmet.set("title", gourmet_title);
+        gourmet.set("user_avatar", userinfo.avatarUrl);
+        //添加数据，第一个入口参数是null
+        gourmet.save(null, {
+            success: function(result) {
+                console.log("创建成功, objectId:"+result.id);
+                utils.showSuccess("创建成功！")
+                setTimeout(function(){
+                  wx.navigateTo({
+                    url: '../index/index'
+                  })
+                },2000)
+            },
+            error: function(result, error) {
+              // 添加失败
+              console.log('创建失败',error);
+            }
+        });
+      })
+
   }
 
 }
