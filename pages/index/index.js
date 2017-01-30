@@ -1,37 +1,46 @@
-var utils = require('../../utils/util.js');
-
-//index.js
 //获取应用实例
-var app = getApp()
+var app = getApp();
+var utils = require('../../utils/util.js');
+var Bmob = require('../../utils/bmob.js');
+
+var initFlag = false;
+
+// get gourmets 
+function getGourmet(cb){
+  app.getLocationInfo(locationInfo=>{
+
+       var Gourmet = Bmob.Object.extend("gourmet");
+       console.log('locationInfo',locationInfo);
+        var point = new Bmob.GeoPoint({
+          latitude: locationInfo.latitude
+          ,longitude: locationInfo.longitude
+        });
+        var southwestOfSF = new Bmob.GeoPoint(
+          locationInfo.latitude - 0.25374 , locationInfo.longitude - 0.33255);
+
+        var northeastOfSF = new Bmob.GeoPoint(
+          locationInfo.latitude + 0.22382, locationInfo.longitude + 0.23599);
+
+        // 创建查询
+        var query = new Bmob.Query(Gourmet);
+        // location附近的位置
+        // query.near("location", point);
+        query.withinGeoBox("location", southwestOfSF, northeastOfSF);
+        // 返回10个地点数据
+        query.limit(50);
+        // 查询
+        query.find({
+          success: function(gourmets) {
+              cb(gourmets);
+          }
+        });
+    })
+}
+
 Page({
   data: {
     app_name: '美食地图'
-    ,points:[
-      {
-        name: '阿婆牛杂'
-        ,reporter: 'Amy'
-        ,comments:[{'a':1},{},{}]
-        ,create_time: '2017-01-01'
-        ,longitude: 110.290740
-        ,latitude: 21.610395
-      }
-      ,{
-        name: '陈伯拉肠'
-        ,reporter: 'Bob'
-        ,comments:[{'a':1},{},{}]
-        ,create_time: '2017-01-01'
-        ,longitude: 110.290203
-        ,latitude: 21.609637
-      }
-      ,{
-        name: '湿炒牛河'
-        ,reporter: 'Cute'
-        ,comments:[{'a':1},{},{}]
-        ,create_time: '2017-01-01'
-        ,longitude: 110.292842
-        ,latitude: 21.611153
-      }
-    ]
+    ,gourmets:[]
   }
   //跳转到地图
   ,showMap: function() {
@@ -50,11 +59,26 @@ Page({
     // Do some initialize when page load.
   }
   ,onReady: function() {
+    var that = this;
     // Do something when page ready.
+    initFlag = true;
+    getGourmet(gourmets=>{
+      console.log('onReady',gourmets);
+      that.setData({
+        gourmets: gourmets
+      })
+    })
   }
   ,onShow: function() {
     // Do something when page show.
-    utils.showSuccess('onShow')
+    if(!initFlag) return;
+    var that = this;
+    getGourmet(gourmets=>{
+      console.log('onShow',gourmets);
+      that.setData({
+        gourmets: gourmets
+      })
+    })
   }
   ,onHide: function() {
     // Do something when page hide.
