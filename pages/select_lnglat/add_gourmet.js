@@ -10,23 +10,26 @@ var headurl = "";//
 var headurlIndex = 0;
 var geopoint = null;
 
+function clearData(){
+   gourmet_title = "";
+   gourmet_desc = "";
+   urls = [];
+   headurl = "";//
+   headurlIndex = 0;
+   geopoint = null;
+}
+
 module.exports = {
   editPos: function(){
       console.log('editPos');
-      this.getLngLat();
-      try {
-        var value = wx.getStorageSync(CS.KEY_GEOPOINT);
-        console.log('value',value);
-        console.log('value type', typeof value);
-        if (value) {
-            geopoint = value;
-            //
-            this.setData({
-              "hide": true
-              ,"show": true
-            })
-        }
-      } catch (e) {}
+      this.getLngLat(value=>{
+        geopoint = value;
+        //
+        this.setData({
+          "hide": true
+          ,"show": true
+        })
+      });   
   }
   //add pictures
   ,add_pics:function(){
@@ -126,9 +129,9 @@ module.exports = {
       console.log('gourmet_title',gourmet_title);
       console.log('gourmet_desc',gourmet_desc);
       // 检查参数
-      // if(urls.length == 0){
-      //     return utils.showModal('错误','至少上传一张图片')
-      // }
+      if(urls.length == 0){
+          return utils.showModal('错误','至少上传一张图片')
+      }
       if(gourmet_title === ""){
           return utils.showModal('错误','请输入美食点名称')
       }
@@ -151,11 +154,10 @@ module.exports = {
         gourmet.save(null, {
             success: function(result) {
                 console.log("创建成功, objectId:"+result.id);
-                utils.showSuccess("创建成功！")
+                utils.showSuccess("创建成功！");
+                clearData();
                 setTimeout(function(){
-                  wx.navigateTo({
-                    url: '../index/index'
-                  })
+                  wx.navigateBack()
                 },2000)
             },
             error: function(result, error) {

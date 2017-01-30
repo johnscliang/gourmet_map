@@ -57,7 +57,7 @@ var combinePage = {
 
   }
   //获取中间点的经纬度，并mark出来
-  ,getLngLat: function(){
+  ,getLngLat: function(cb){
       console.log('getlngLat');
       var that = this;
       this.mapCtx = wx.createMapContext("map4select");
@@ -68,11 +68,8 @@ var combinePage = {
               longitude: res.longitude
               ,latitude: res.latitude
             }
-            //存存
-            wx.setStorage({
-              key: CS.KEY_GEOPOINT
-              ,data: geopoint
-            })
+
+            if(cb){cb(geopoint)}
 
             that.setData({
             longitude: geopoint.longitude
@@ -94,10 +91,11 @@ var combinePage = {
   }
   ,regionchange(e) {
     // 地图发生变化的时候，获取中间点，也就是用户选择的位置
-    console.log(e);
-      if(e.type == 'end'){
-          this.getLngLat()
-      }
+    if(e.type == 'end'){
+        this.getLngLat(geopoit=>{
+          console.log(geopoit)
+        })
+    }
   }
 }
 

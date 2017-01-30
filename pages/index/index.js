@@ -1,3 +1,5 @@
+var utils = require('../../utils/util.js');
+
 //index.js
 //获取应用实例
 var app = getApp()
@@ -43,4 +45,28 @@ Page({
       url: '../select_lnglat/select_lnglat'
     })
   }
+
+  ,onLoad: function(options) {
+    // Do some initialize when page load.
+  }
+  ,onReady: function() {
+    // Do something when page ready.
+  }
+  ,onShow: function() {
+    // Do something when page show.
+    utils.showSuccess('onShow')
+  }
+  ,onHide: function() {
+    // Do something when page hide.
+  }
+  ,onUnload: function() {
+    // Do something when page close.
+  }
+  ,onPullDownRefresh: function() {
+    // Do something when pull down.
+  }
+  ,onReachBottom: function() {
+    // Do something when page reach bottom.
+  }
+
 })
