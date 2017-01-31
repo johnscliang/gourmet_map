@@ -45,7 +45,7 @@ module.exports = {
             for(var i = 0; i< tempFilePaths.length; i++){
                 utils.showLoading("上传中");
                 console.log("uploading...")
-                var name = i+".jpg";//上传的图片的别名
+                var name = utils.getFileName()+i+".jpg";//上传的图片的别名
                 var file = new Bmob.File(name, [tempFilePaths[i]]);
                 console.log(name,tempFilePaths[i])
                 file.save().then(function (res) {
