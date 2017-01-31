@@ -25,3 +25,8 @@
 .tips{
     color: dodgerblue
 }
+
+.info{
+    text-align: center;
+    padding: 10px;
+}

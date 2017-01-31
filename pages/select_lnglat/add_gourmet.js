@@ -26,13 +26,13 @@ module.exports = {
   }
   //add pictures
   ,add_pics:function(){
-    if(urls.length == 9){
-      utils.showModal('错误','最多添加9张图片')
+    if(urls.length == 3){
+      utils.showModal('错误','最多添加3张图片')
       return;
     }
     var that = this;
       wx.chooseImage({
-        count: 9 - urls.length, // 默认9
+        count: 3 - urls.length, // 最多3张图片好了
         sizeType: ['compressed'],
         sourceType: ['album', 'camera'],
         success: function (res) {
@@ -49,12 +49,13 @@ module.exports = {
                 var file = new Bmob.File(name, [tempFilePaths[i]]);
                 console.log(name,tempFilePaths[i])
                 file.save().then(function (res) {
-                  console.log('upload',res.url());
-                  urls.push(res.url());
+                  console.log('upload ok',res.url());
+                  if(res.url()){
+                    urls.push(res.url());
+                  }
                   updatePrgress();
                 }, function (error) {
-                  console.log('upload',error);
-                  updatePrgress();
+                  console.log('upload fail',error);
                 })
             }
 
@@ -152,7 +153,7 @@ module.exports = {
       }
 
       app.getUserInfo(userinfo=>{
-        // console.log(userinfo)
+        console.log(userinfo)
         var Gourmet = Bmob.Object.extend("gourmet");
         var gourmet = new Gourmet();
         gourmet.set("user_nickname", userinfo.nickName);
@@ -166,6 +167,8 @@ module.exports = {
         gourmet.set("title", gourmet_title);
         gourmet.set("address", gourmet_address);
         gourmet.set("user_avatar", userinfo.avatarUrl);
+        gourmet.set("create_time", utils.getNowTimestamp());
+        gourmet.set("create_time_tag", utils.getNowTimeTag());
         //添加数据，第一个入口参数是null
         gourmet.save(null, {
             success: function(result) {

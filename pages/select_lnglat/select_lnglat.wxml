@@ -15,7 +15,7 @@
 <view style="padding: 10px" class="center">
 
     <view style="height:8px"/>
-    <text>已添加{{urls.length}}/9张图片</text>
+    <text>已添加{{urls.length}}/3张图片</text>
     <view>
         <button type="primary" bindtap="add_pics">添加图片</button>
             <view style="height:8px"></view>

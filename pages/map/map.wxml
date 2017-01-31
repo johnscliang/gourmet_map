@@ -5,6 +5,10 @@
  show-location scale="20" controls="{{controls}}">
 </map>
 
+<view hidden="{{show ? true:false}}" class="info">
+  <text>请点击刚兴趣的点</text>
+</view>
+
 <view hidden="{{show ? false:true}}" style="padding:10px">
   <text bindtap="gotoDetail" data-id="{{gourmet.objectId}}" class="tips">点击查看详情</text>
   

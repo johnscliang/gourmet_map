@@ -16,10 +16,10 @@ function getGourmet(cb){
           ,longitude: locationInfo.longitude
         });
         var southwestOfSF = new Bmob.GeoPoint(
-          locationInfo.latitude - 0.25374 , locationInfo.longitude - 0.33255);
+          locationInfo.latitude - 4.5 , locationInfo.longitude - 5.4);
 
         var northeastOfSF = new Bmob.GeoPoint(
-          locationInfo.latitude + 0.22382, locationInfo.longitude + 0.23599);
+          locationInfo.latitude + 3.1, locationInfo.longitude + 3.9);
 
         // 创建查询
         var query = new Bmob.Query(Gourmet);

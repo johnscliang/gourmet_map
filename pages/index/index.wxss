@@ -36,12 +36,14 @@
     font-weight: 700
 }
 
-.itemtext_footer{
+.address{
     color: gray
 }
-
-.item_create_time{
-    float: right
+.create_time{
+    display: block;
+    text-align: right;
+    font-size: 10px;
+    font-style: italic;
 }
 
 .line{

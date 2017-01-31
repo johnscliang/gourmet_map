@@ -130,4 +130,16 @@ module.exports = {
       var s = time.getSeconds();
       return y+''+add0(m)+''+add0(d)+''+add0(h)+''+add0(mm)+''+add0(s);
     }
+    ,getNowTimeTag: function(){
+      var timestamp = this.getNowTimestamp();
+      function add0(m){return m<10?'0'+m:m }
+      var time = new Date(timestamp * 1000);
+      var y = time.getFullYear();
+      var m = time.getMonth()+1;
+      var d = time.getDate();
+      var h = time.getHours();
+      var mm = time.getMinutes();
+      var s = time.getSeconds();
+      return y+'年'+add0(m)+'月'+add0(d)+'日';
+    }
 }
