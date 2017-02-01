@@ -15,12 +15,16 @@
 </view>
 
 <view style="padding:10px">
-    <view class="description">{{gourmet.description}}</view>
+    <view bindtap="openLocation" id="openLocation">
+      <image id="img_openlocation" src="../../imgs/ic_map.png"></image>
+      <text style="vertical-align: middle">查看位置</text>
+    </view>
+    <text class="description">“ {{gourmet.description}}”</text>
 </view>
 
 <!--comments-->
 <view>
-
+    <view style="height:10px"/>
     <view>
       <textarea placeholder="输入你的评论" auto-height="true" maxlength="500" 
      bindinput="inputComment"
@@ -50,9 +54,4 @@
 
     <button hidden="{{hide_loadmore? true:false}}" type="default" bindtap="onLoadMore">加载更多</button>
     
-</view>
-
-<view bindtap="openLocation" id="openLocation">
-    <image id="img_openlocation" src="../../imgs/ic_map.png"></image>
-    <text style="vertical-align: middle">打开位置</text>
 </view>
