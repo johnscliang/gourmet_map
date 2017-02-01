@@ -29,6 +29,8 @@ function getGourmet(cb){
         //query.withinKilometers("location", point, 800);
         // 返回10个地点数据
         query.limit(50);
+        //按修改时间
+        query.descending("updatedAt");
         // 查询
         query.find({
           success: function(gourmets) {
