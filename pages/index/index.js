@@ -8,6 +8,7 @@ var mPage = 1;
 
 // get gourmets 
 function getGourmet(page, cb){
+  utils.showLoading("loading");
   app.getLocationInfo(locationInfo=>{
 
        var Gourmet = Bmob.Object.extend("gourmet");
@@ -44,7 +45,12 @@ function getGourmet(page, cb){
               }
               //
               cb(app.globalData.gourmets);
+              utils.hideLoading();
           }
+           ,error: function(error) {
+               utils.hideLoading();
+               console.log('find error',error);
+            }
         });
     })
 }
@@ -72,6 +78,12 @@ Page({
 
   ,onLoad: function(options) {
     // Do some initialize when page load.
+    app.getSystemInfo((width, height) => {
+      that.setData({
+           scroll_width: width - 10
+          ,scroll_height: height - 20
+        })
+    })
   }
   ,onReady: function() {
     var that = this;
@@ -91,7 +103,7 @@ Page({
     var that = this;
     mPage = 1;
     getGourmet(mPage,(gourmets)=>{
-      console.log('onShow',gourmets);
+      //console.log('onShow',gourmets);
       that.setData({
         gourmets: gourmets
       })
@@ -115,6 +127,17 @@ Page({
     console.log('gotoDetail',e.target.dataset);
     wx.navigateTo({
       url: '../detail/detail?id='+id
+    })
+  }
+  //
+  ,loadMore: function(){
+    var that = this;
+    console.log('loadmore',mPage+1);
+     getGourmet(mPage+1,(more_gourmets)=>{
+      mPage++; 
+      that.setData({
+        gourmets: that.data.gourmets.concat(more_gourmets)
+      })
     })
   }
 
