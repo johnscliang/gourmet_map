@@ -4,12 +4,12 @@
 
 <view class="center">
 
-<swiper indicator-dots="{{indicatorDots}}"
+<swiper style="height:{{img_height}}px" indicator-dots="{{indicatorDots}}"
   bindtap="preview"
   autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
   <block wx:for="{{gourmet.urls}}">
     <swiper-item>
-      <image src="{{item}}" class="slide-image" width="{{img_width}}" height="{{img_height}}"/>
+      <image src="{{item}}" mode="aspectFill" class="swiper-image" width="{{img_width}}" height="{{img_height}}"/>
     </swiper-item>
   </block>
 </swiper>

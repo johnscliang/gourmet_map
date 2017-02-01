@@ -59,3 +59,7 @@
 #openLocation:active{
     background-color: darkgreen;
 }
+
+.swiper-image{
+    width: 100%;
+}

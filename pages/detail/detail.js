@@ -19,7 +19,7 @@ Page({
       app.getSystemInfo((width, height) => {
       that.setData({
         img_width: width
-        ,img_height: width * 2/3
+        ,img_height: width * 9/16
         ,gourmet: gourmet 
         })
     })
