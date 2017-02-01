@@ -5,10 +5,21 @@ var Bmob = require('../../utils/bmob.js');
 
 var initFlag = false;
 var mPage = 1;
+var mIsmore = true;
+var mLoading = false;
+
+function setLoading(loading){
+  mLoading = loading;
+  if(mLoading){
+    utils.showLoading("loading");
+  }else{
+    utils.hideLoading();
+  }
+}
 
 // get gourmets 
 function getGourmet(page, cb){
-  utils.showLoading("loading");
+  setLoading(true)
   app.getLocationInfo(locationInfo=>{
 
        var Gourmet = Bmob.Object.extend("gourmet");
@@ -45,10 +56,10 @@ function getGourmet(page, cb){
               }
               //
               cb(app.globalData.gourmets);
-              utils.hideLoading();
+              setLoading(false)
           }
            ,error: function(error) {
-               utils.hideLoading();
+               setLoading(false)
                console.log('find error',error);
             }
         });
@@ -81,7 +92,7 @@ Page({
     app.getSystemInfo((width, height) => {
       that.setData({
            scroll_width: width - 10
-          ,scroll_height: height - 20
+          ,scroll_height: height - 200
         })
     })
   }
@@ -90,6 +101,7 @@ Page({
     // Do something when page ready.
     initFlag = true;
     mPage = 1;
+    mIsmore = true;
     getGourmet(mPage,(gourmets)=>{
       console.log('onReady',gourmets);
       that.setData({
@@ -102,8 +114,9 @@ Page({
     if(!initFlag) return;
     var that = this;
     mPage = 1;
+    mIsmore = true;
     getGourmet(mPage,(gourmets)=>{
-      //console.log('onShow',gourmets);
+      console.log('onShow',gourmets);
       that.setData({
         gourmets: gourmets
       })
@@ -131,13 +144,19 @@ Page({
   }
   //
   ,loadMore: function(){
+    if(!mIsmore || mLoading) return;
     var that = this;
     console.log('loadmore',mPage+1);
      getGourmet(mPage+1,(more_gourmets)=>{
-      mPage++; 
-      that.setData({
-        gourmets: that.data.gourmets.concat(more_gourmets)
-      })
+       if(more_gourmets && more_gourmets.length > 0){
+          mPage++;
+          that.setData({
+            gourmets: that.data.gourmets.concat(more_gourmets)
+          })
+       }else{
+         mIsmore = false;
+       }
+      
     })
   }
 

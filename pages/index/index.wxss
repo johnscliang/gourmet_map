@@ -4,6 +4,8 @@
     line-height: 2.8em;
     height: 2.8em;
     background: orange;
+    bottom: 0px;
+    z-index: 100;
 }
 
 .tab{
@@ -29,21 +31,28 @@
 }
 
 #gourmet_list{
-    padding: 12px;
+    /*padding: 12px;*/
+    
 }
 
 .itemtext_title{
-    font-weight: 700
+    font-weight: 700;
+    padding-left: 10px;
 }
 
 .address{
-    color: gray
+    display: block;
+    color: gray;
+    padding-left: 10px;
 }
 .create_time{
     display: block;
     text-align: right;
     font-size: 10px;
     font-style: italic;
+    padding-right: 10px;
+    margin-top: 5px;
+    float: right;
 }
 
 .line{

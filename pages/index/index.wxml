@@ -4,28 +4,17 @@
   <view id="add_gourmet" bindtap="addPoint" class="tab">添加美食</view>
 </view>
 
-<view style="height:2.8em;"/>
-
-<view id="gourmet_list">
+<scroll-view id="gourmet_list" scroll-y="true" style="width:100%;height: 800px;" bindscrolltolower="loadMore" scroll-top="100">
   
   <view wx:for="{{gourmets}}">
-
-    <view wx:if="{{index > 0}}">
-      <view style="height:1em;"/>
-    </view>
+    <view style="height:1em;"/>
   
     <view>
       <text class="itemtext_title">{{item.title}}</text>
-    </view>
-
-    <view>
-    <image bindtap="gotoDetail" data-id="{{item.objectId}}" class="img" mode="aspectFill"
-      src="{{item.head_url}}"></image>
       <text class="create_time">创建时间：{{item.create_time_tag}}</text>
-    </view>
-
-    <view class="footer">
-      <text class="address">{{item.address}}</text>
+      <image bindtap="gotoDetail" data-id="{{item.objectId}}" class="img" mode="aspectFill"
+      src="{{item.head_url}}"></image>
+      <text class="address">地址：{{item.address}}</text>
     </view>
 
     <view class="line"/>
@@ -33,8 +22,10 @@
   </view>
 
 <!--gourmet_list-->
-</view>
+</scroll-view>
 
-<view style="padding:0px 10px 3px 10px">
+<view style="height:2.8em;"/>
+
+<!--<view style="padding:0px 10px 3px 10px">
   <button type="primary">加载更多</button>
-</view>
+</view>-->
