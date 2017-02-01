@@ -3,6 +3,44 @@ var Bmob = require('../../utils/bmob.js');
 var utils = require('../../utils/util.js');
 
 var gourmet = null;
+var mComments = [];
+//
+const PAGE_SIZE = 3;
+var mPage = 1;
+var mIsmore = true;
+var mLoading = false;
+
+function setLoading(loading){
+  mLoading = loading;
+  if(loading){
+    utils.showLoading()
+  }else{
+    utils.hideLoading()
+  }
+}
+
+//comments
+var Comment = Bmob.Object.extend("comment");
+function getComments(page, cb){
+    setLoading(true);
+    var query = new Bmob.Query(Comment);
+    query.equalTo("gourmet_id", gourmet.objectId);
+    query.descending("updatedAt");
+    query.limit(PAGE_SIZE);
+    query.skip(PAGE_SIZE * (page - 1));
+    //关联查询 头像 昵称
+    query.find({
+      success: function(results) {
+          setLoading(false);
+          console.log(page, results);
+          if(cb) cb(results)
+      },
+      error: function(error) {
+        setLoading(false);
+        console.log("查询失败: " + error.code + " " + error.message);
+      }
+    });
+}
 
 Page({
   data: {
@@ -11,19 +49,31 @@ Page({
     autoplay: true,
     interval: 3000,
     duration: 1000
+    //
+    ,hide_loadmore: true
   }
   ,onLoad: function(option){
       var that = this;
       gourmet = app.globalData.gourmetsMap[option.id];
       console.log(gourmet.urls);
       app.getSystemInfo((width, height) => {
-      that.setData({
-        img_width: width
-        ,img_height: width * 9/16
-        ,gourmet: gourmet 
-        })
-    })
-
+        that.setData({
+          img_width: width
+          ,img_height: width * 9/16
+          ,gourmet: gourmet 
+          })
+      })  
+      //
+      mPage = 1;
+      getComments(mPage, function(comments){
+          mComments = comments;
+          if(comments.length > 0){
+              that.setData({
+                comments: mComments
+                ,hide_loadmore: false
+              })
+          }
+      })
   }
 
   ,preview: function(){
@@ -51,44 +101,19 @@ Page({
       app.getUserInfo(userinfo=>{
         //
         utils.showLoading("loading")
-        //
-        var Gourmet = Bmob.Object.extend("gourmet");
-        var query = new Bmob.Query(Gourmet);
-        // 这个 id 是要修改条目的 id，你在生成这个存储并成功时可以获取到，请看前面的文档
-        query.get(gourmet.objectId, {
-            success: function(result) {
-              addComment(gourmet.objectId, userinfo.openid, content);
-              //console.log(gourmet.objectId,result)
-              var oldcomments = result.get("comments") || [];
-              console.log('oldcomments',oldcomments)
-              var comment = {
-                nickname: userinfo.nickName
-                ,comment: content
-                ,avatar: userinfo.avatarUrl
-                ,create_time: utils.getNowTimestamp()
-              }
-              oldcomments.unshift(comment);
-              if(oldcomments.length > 300){
-                  oldcomments.pop()
-              }
-              result.set('comments', oldcomments);
-              result.save();
-              that.setData({
-                //新增成功之后，清空输入框
-                textarea_content: ""
-                //设置新的
-                ,gourmet: result
-              });
-              utils.hideLoading();
-              // The object was retrieved successfully.
-            },
-            error: function(object, error) {
-                utils.hideLoading()
-            }
+        addComment(gourmet.objectId, userinfo, content, (ok,newComment)=>{
+          if(ok){
+            mComments.unshift(newComment);
+            that.setData({
+              //新增成功之后，清空输入框
+              textarea_content: ""
+              //设置新的
+              ,comments: mComments
+            });
+          }
+          utils.hideLoading();
         });
-        
       })
-
   }
 
   ,openLocation: function(){
@@ -96,6 +121,28 @@ Page({
         latitude: gourmet.location.latitude,
         longitude: gourmet.location.longitude,
         scale: 28
+      })
+  }
+
+  ,onLoadMore: function(){
+    if(mLoading) return;
+    if(!mIsmore) return;
+    var that = this;
+    getComments(mPage + 1, function(comments){
+          if(comments && comments.length > 0){
+            mPage++;
+            mComments = mComments.concat(comments);
+            if(comments.length > 0){
+                that.setData({
+                  comments: mComments
+                });
+            }
+          }else{
+            mIsmore = false;
+            that.setData({
+               hide_loadmore: true
+            })
+          }
       })
   }
 
@@ -110,23 +157,27 @@ Page({
 
 
 //添加评论-到新的表
-function addComment(gourmet_id, openid, content){
+function addComment(gourmet_id, userinfo, content, cb){
     //创建类和实例
     var Comment = Bmob.Object.extend("comment");
     var comment = new Comment();
     comment.set("gourmet_id", gourmet_id);
-    comment.set("openid", openid);
+    comment.set("openid", userinfo.openid);
+    comment.set("avatar", userinfo.avatarUrl);
+    comment.set("nickname", userinfo.nickName);
     comment.set("content", content);
     comment.set("create_time",utils.getNowTimestamp());
+    comment.set("create_time_tag", utils.timestamp2date(utils.getNowTimestamp() * 1000));
     //添加数据，第一个入口参数是null
     comment.save(null, {
         success: function(result) {
-          // 添加成功，返回成功之后的objectId（注意：返回的属性名字是id，不是objectId），你还可以在Bmob的Web管理后台看到对应的数据
             console.log("创建新表评论成功, objectId:"+result.id);
+            cb(true, result);
         },
         error: function(result, error) {
           // 添加失败
           console.log('创建新表评论失败');
+          cb(false);
         }
     });
 }

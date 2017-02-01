@@ -50,7 +50,7 @@
     line-height: 1.8em;
     position: fixed;
     right: 10px;
-    bottom: 10px;
+    top: 10px;
     color: white;
     background-color: limegreen;
     box-shadow: 0 0 3px darkgreen;
