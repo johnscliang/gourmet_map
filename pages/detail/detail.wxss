@@ -20,7 +20,7 @@
     vertical-align: middle;
     width: 2.5em;
     height: 2.5em;
-    border: 1px solid lawngreen;
+    border: 1px solid lightgrey;
     border-radius: 5%;
 }
 
@@ -39,7 +39,6 @@
 .comment_layout{
     padding-top: 5px;
     padding-bottom: 5px;
-    display: flex;
 }
 
 .comment_text_nickname{
@@ -61,8 +60,9 @@
 .comment_area{
     display: inline-block;
     width: 78%;
-    border: 1px solid lightgreen;
+    border: 1px solid lightgrey;
     vertical-align: middle;
+    margin-left: 10px;
 }
 
 #submit{
@@ -74,7 +74,7 @@
     box-shadow: 0 0 3px darkgray;
     border-radius: 5px;
     vertical-align: middle;
-    margin-left: 5px;
+    margin-left: 3px;
 }
 #submit:active{
     background: lightgrey
@@ -108,5 +108,6 @@
 
 .line{
     height: 1px;
-    color: gray;
+    background: lightgrey;
+    margin-top: 5px;
 }

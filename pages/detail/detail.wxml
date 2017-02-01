@@ -19,7 +19,7 @@
 </view>
 
 <!--comments-->
-<view style="padding:10px">
+<view>
 
     <view>
       <textarea placeholder="输入你的评论" auto-height="true" maxlength="500" 
@@ -29,18 +29,20 @@
         提交
       </view>
     </view>
-    <view style="height:10px"></view>
+    <view style="height:10px"/>
 
     <view class="comment_layout" wx:for="{{comments}}">
-      <view class="line" />
-      <view class="layout_left">
-        <image id="avatar" src="{{item.avatar}}"></image>
-      </view>
+      
+      <view style="display:flex;padding: 0px 10px;">
+        <view class="layout_left">
+          <image id="avatar" src="{{item.avatar}}"></image>
+        </view>
 
-      <view class="layout_right">
-        <text class="comment_text_nickname">{{item.nickname}}</text>
-        <text class="comment_text_content">{{item.content}}</text>
-        <text class="comment_text_time">{{item.create_time_tag}}</text>
+        <view class="layout_right">
+          <text class="comment_text_nickname">{{item.nickname}}</text>
+          <text class="comment_text_content">{{item.content}}</text>
+          <text class="comment_text_time">{{item.create_time_tag}}</text>
+        </view>
       </view>
       <view class="line" />
       
