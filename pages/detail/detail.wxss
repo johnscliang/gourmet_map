@@ -1,5 +1,9 @@
 .center{
-    text-align: center;
+    text-align: center
+}
+
+.right{
+    text-align: right
 }
 
 .title{
@@ -29,14 +33,28 @@
     padding-bottom: 5px;
 }
 
-.comment{
+.comment_text{
     font-size: 0.8em;
     color: gray;
 }
 
 .comment_area{
-    width: 100%;
+    float: left;
+    width: 80%;
     border: 1px solid lightgreen;
+}
+
+#submit{
+    width: 20%;
+    display: inline;
+    padding: 5px 10px;
+    line-height: 1.5em;
+    background-color: whitesmoke;
+    box-shadow: 0 0 3px darkgray;
+    border-radius: 5px;
+}
+#submit:active{
+    background: lightgrey
 }
 
 #img_openlocation{

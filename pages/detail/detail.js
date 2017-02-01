@@ -64,16 +64,7 @@ Page({
           })
       })  
       //
-      mPage = 1;
-      getComments(mPage, function(comments){
-          mComments = comments;
-          if(comments.length > 0){
-              that.setData({
-                comments: mComments
-                ,hide_loadmore: false
-              })
-          }
-      })
+      loadFirstPage(this)
   }
 
   ,preview: function(){
@@ -103,13 +94,11 @@ Page({
         utils.showLoading("loading")
         addComment(gourmet.objectId, userinfo, content, (ok,newComment)=>{
           if(ok){
-            mComments.unshift(newComment);
             that.setData({
               //新增成功之后，清空输入框
               textarea_content: ""
-              //设置新的
-              ,comments: mComments
             });
+            loadFirstPage(that);
           }
           utils.hideLoading();
         });
@@ -180,4 +169,18 @@ function addComment(gourmet_id, userinfo, content, cb){
           cb(false);
         }
     });
+}
+
+function loadFirstPage(that){
+  mPage = 1;
+  getComments(mPage, function(comments){
+      mComments = comments;
+      if(comments.length > 0){
+          mIsmore = true;
+          that.setData({
+            comments: mComments
+            ,hide_loadmore: false
+          })
+      }
+  })
 }

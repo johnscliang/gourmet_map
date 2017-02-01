@@ -21,18 +21,22 @@
 <!--comments-->
 <view style="padding:10px">
 
-    <textarea placeholder="输入你的评论" auto-height="true" maxlength="500" 
+    <view class="right">
+      <textarea placeholder="输入你的评论" auto-height="true" maxlength="500" 
      bindinput="inputComment"
     class="comment_area" value="{{textarea_content}}" />
+      <view id="submit"  bindtap="addComment">
+        提交
+      </view>
+    </view>
     <view style="height:10px"></view>
-    <button bindtap="addComment">提交评论</button>
 
     <view class="comment_layout" wx:for="{{comments}}">
     <image id="avatar" src="{{item.avatar}}"></image>
-    <text class="comment">{{item.nickname}}</text>
-    <text class="comment">{{item.content}}</text>
+    <text class="comment_text">{{item.nickname}}</text>
+    <text class="comment_text">{{item.content}}</text>
     <br/>
-    <text class="comment">{{item.create_time_tag}}</text>
+    <text class="comment_text">{{item.create_time_tag}}</text>
     </view>
 
     <button hidden="{{hide_loadmore? true:false}}" type="default" bindtap="onLoadMore">加载更多</button>
