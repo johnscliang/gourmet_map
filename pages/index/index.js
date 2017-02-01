@@ -4,8 +4,6 @@ var utils = require('../../utils/util.js');
 var Bmob = require('../../utils/bmob.js');
 
 var initFlag = false;
-var mPage = 1;
-var mIsmore = true;
 var mLoading = false;
 
 function setLoading(loading){
@@ -18,7 +16,7 @@ function setLoading(loading){
 }
 
 // get gourmets 
-function getGourmet(page, cb){
+function getGourmet(cb){
   setLoading(true)
   app.getLocationInfo(locationInfo=>{
 
@@ -41,9 +39,9 @@ function getGourmet(page, cb){
         query.withinGeoBox("location", southwestOfSF, northeastOfSF);
         //query.withinKilometers("location", point, 800);
         // 返回10个地点数据
-        query.limit(3);
+        query.limit(50);
         //
-        query.skip(3 * (page))
+        //query.skip(pagesize * (page))
         //按修改时间
         query.descending("updatedAt");
         // 查询
@@ -73,12 +71,33 @@ Page({
   }
   //跳转到地图
   ,showMap: function() {
-    if(app.globalData.gourmets.length == 0){
+    var that = this;
+    if(mLoading) return;//等待加载完
+    if(app.globalData.gourmets.length > 0){
+        gotoMap()
+    }else{
         // 没有点的情况
+        wx.showModal({
+          title: "周围没有推荐的地道美食",
+          content: "不如你来推荐一个？",
+          success: function(res) {
+            if (res.confirm) {
+              console.log('用户点击确定')
+              that.addPoint()
+            }else{
+               console.log('用户点击取消')
+               gotoMap()
+            }
+          }
+        })
     }
-    wx.navigateTo({
-      url: '../map/map'
-    })
+
+    function gotoMap(){
+      wx.navigateTo({
+          url: '../map/map'
+      })
+    }
+
   }
   //添加美食点点
   ,addPoint: function(){
@@ -100,9 +119,7 @@ Page({
     var that = this;
     // Do something when page ready.
     initFlag = true;
-    mPage = 1;
-    mIsmore = true;
-    getGourmet(mPage,(gourmets)=>{
+    getGourmet((gourmets)=>{
       console.log('onReady',gourmets);
       that.setData({
         gourmets: gourmets
@@ -113,9 +130,7 @@ Page({
     // Do something when page show.
     if(!initFlag) return;
     var that = this;
-    mPage = 1;
-    mIsmore = true;
-    getGourmet(mPage,(gourmets)=>{
+    getGourmet((gourmets)=>{
       console.log('onShow',gourmets);
       that.setData({
         gourmets: gourmets
@@ -134,29 +149,12 @@ Page({
   ,onReachBottom: function() {
     // Do something when page reach bottom.
   }
-
+  //详情
   ,gotoDetail: function(e){
     var id = e.target.dataset.id;
     console.log('gotoDetail',e.target.dataset);
     wx.navigateTo({
       url: '../detail/detail?id='+id
-    })
-  }
-  //
-  ,loadMore: function(){
-    if(!mIsmore || mLoading) return;
-    var that = this;
-    console.log('loadmore',mPage+1);
-     getGourmet(mPage+1,(more_gourmets)=>{
-       if(more_gourmets && more_gourmets.length > 0){
-          mPage++;
-          that.setData({
-            gourmets: that.data.gourmets.concat(more_gourmets)
-          })
-       }else{
-         mIsmore = false;
-       }
-      
     })
   }
 

@@ -4,7 +4,7 @@
   <view id="add_gourmet" bindtap="addPoint" class="tab">添加美食</view>
 </view>
 
-<scroll-view id="gourmet_list" scroll-y="true" style="width:100%;height: 800px;" bindscrolltolower="loadMore" scroll-top="100">
+<view id="gourmet_list">
   
   <view wx:for="{{gourmets}}">
     <view style="height:1em;"/>
@@ -22,10 +22,6 @@
   </view>
 
 <!--gourmet_list-->
-</scroll-view>
+</view>
 
 <view style="height:2.8em;"/>
-
-<!--<view style="padding:0px 10px 3px 10px">
-  <button type="primary">加载更多</button>
-</view>-->
