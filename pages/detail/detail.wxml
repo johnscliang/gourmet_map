@@ -1,6 +1,4 @@
-<view style="padding:10px">
-  <view class="title">{{gourmet.title}}</view>
-</view>
+<view class="title">{{gourmet.title}}</view>
 
 <view class="center">
 
