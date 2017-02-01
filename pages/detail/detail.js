@@ -43,9 +43,9 @@ Page({
 
   ,addComment: function(e){
       var that = this;
-      var commentStr = this.data.textarea_content;
-      console.log(commentStr);
-      if(commentStr == "" || commentStr == null){
+      var content = this.data.textarea_content;
+      console.log(content);
+      if(content == "" || content == null){
           return utils.showModal('错误','请输入评论')
       }
       app.getUserInfo(userinfo=>{
@@ -57,12 +57,13 @@ Page({
         // 这个 id 是要修改条目的 id，你在生成这个存储并成功时可以获取到，请看前面的文档
         query.get(gourmet.objectId, {
             success: function(result) {
-              console.log(gourmet.objectId,result)
+              addComment(gourmet.objectId, userinfo.openid, content);
+              //console.log(gourmet.objectId,result)
               var oldcomments = result.get("comments") || [];
               console.log('oldcomments',oldcomments)
               var comment = {
                 nickname: userinfo.nickName
-                ,comment: commentStr
+                ,comment: content
                 ,avatar: userinfo.avatarUrl
                 ,create_time: utils.getNowTimestamp()
               }
@@ -106,3 +107,26 @@ Page({
     }
   }
 })
+
+
+//添加评论-到新的表
+function addComment(gourmet_id, openid, content){
+    //创建类和实例
+    var Comment = Bmob.Object.extend("comment");
+    var comment = new Comment();
+    comment.set("gourmet_id", gourmet_id);
+    comment.set("openid", openid);
+    comment.set("content", content);
+    comment.set("create_time",utils.getNowTimestamp());
+    //添加数据，第一个入口参数是null
+    comment.save(null, {
+        success: function(result) {
+          // 添加成功，返回成功之后的objectId（注意：返回的属性名字是id，不是objectId），你还可以在Bmob的Web管理后台看到对应的数据
+            console.log("创建新表评论成功, objectId:"+result.id);
+        },
+        error: function(result, error) {
+          // 添加失败
+          console.log('创建新表评论失败');
+        }
+    });
+}
