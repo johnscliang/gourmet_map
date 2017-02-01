@@ -39,19 +39,23 @@
 }
 
 .comment_area{
-    float: left;
-    width: 80%;
+    /*float: left;*/
+    display: inline-block;
+    width: 78%;
     border: 1px solid lightgreen;
+    vertical-align: middle;
 }
 
 #submit{
-    width: 20%;
+    width: 18%;
     display: inline;
     padding: 5px 10px;
     line-height: 1.5em;
     background-color: whitesmoke;
     box-shadow: 0 0 3px darkgray;
     border-radius: 5px;
+    vertical-align: middle;
+    margin-left: 5px;
 }
 #submit:active{
     background: lightgrey

@@ -5,7 +5,7 @@ var utils = require('../../utils/util.js');
 var gourmet = null;
 var mComments = [];
 //
-const PAGE_SIZE = 3;
+const PAGE_SIZE = 10;
 var mPage = 1;
 var mIsmore = true;
 var mLoading = false;

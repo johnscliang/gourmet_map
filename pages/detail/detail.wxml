@@ -21,7 +21,7 @@
 <!--comments-->
 <view style="padding:10px">
 
-    <view class="right">
+    <view>
       <textarea placeholder="输入你的评论" auto-height="true" maxlength="500" 
      bindinput="inputComment"
     class="comment_area" value="{{textarea_content}}" />
