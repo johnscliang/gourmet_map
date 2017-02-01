@@ -29,7 +29,10 @@
 
     <view class="comment_layout" wx:for="{{gourmet.comments}}">
     {{gourmet.comments.length - index}} 楼 <image id="avatar" src="{{item.avatar}}"></image>
-    <text class="comment"> {{item.comment}}</text>
+    <text class="comment">{{item.nickname}}</text>
+    <text class="comment">{{item.comment}}</text>
+    <br/>
+    <text class="comment">{{item.create_time_tag}}</text>
     </view>
     
 </view>
