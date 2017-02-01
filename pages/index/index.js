@@ -4,9 +4,10 @@ var utils = require('../../utils/util.js');
 var Bmob = require('../../utils/bmob.js');
 
 var initFlag = false;
+var mPage = 1;
 
 // get gourmets 
-function getGourmet(cb){
+function getGourmet(page, cb){
   app.getLocationInfo(locationInfo=>{
 
        var Gourmet = Bmob.Object.extend("gourmet");
@@ -28,7 +29,9 @@ function getGourmet(cb){
         query.withinGeoBox("location", southwestOfSF, northeastOfSF);
         //query.withinKilometers("location", point, 800);
         // 返回10个地点数据
-        query.limit(50);
+        query.limit(3);
+        //
+        query.skip(3 * (page))
         //按修改时间
         query.descending("updatedAt");
         // 查询
@@ -74,7 +77,8 @@ Page({
     var that = this;
     // Do something when page ready.
     initFlag = true;
-    getGourmet(gourmets=>{
+    mPage = 1;
+    getGourmet(mPage,(gourmets)=>{
       console.log('onReady',gourmets);
       that.setData({
         gourmets: gourmets
@@ -85,7 +89,8 @@ Page({
     // Do something when page show.
     if(!initFlag) return;
     var that = this;
-    getGourmet(gourmets=>{
+    mPage = 1;
+    getGourmet(mPage,(gourmets)=>{
       console.log('onShow',gourmets);
       that.setData({
         gourmets: gourmets
