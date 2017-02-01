@@ -32,8 +32,14 @@ function getComments(page, cb){
     query.find({
       success: function(results) {
           setLoading(false);
-          console.log(page, results);
-          if(cb) cb(results)
+          // console.log(page, results);
+          var jsonData = JSON.parse(JSON.stringify(results));
+          //切换时间为友好时间
+          for(var x in jsonData){
+            console.log((jsonData[0].create_time));
+            jsonData[x].create_time_tag = utils.dateStr(jsonData[x].create_time)
+          }
+          if(cb) cb(jsonData)
       },
       error: function(error) {
         setLoading(false);

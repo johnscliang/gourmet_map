@@ -32,11 +32,18 @@
     <view style="height:10px"></view>
 
     <view class="comment_layout" wx:for="{{comments}}">
-    <image id="avatar" src="{{item.avatar}}"></image>
-    <text class="comment_text">{{item.nickname}}</text>
-    <text class="comment_text">{{item.content}}</text>
-    <br/>
-    <text class="comment_text">{{item.create_time_tag}}</text>
+      <view class="line" />
+      <view class="layout_left">
+        <image id="avatar" src="{{item.avatar}}"></image>
+      </view>
+
+      <view class="layout_right">
+        <text class="comment_text_nickname">{{item.nickname}}</text>
+        <text class="comment_text_content">{{item.content}}</text>
+        <text class="comment_text_time">{{item.create_time_tag}}</text>
+      </view>
+      <view class="line" />
+      
     </view>
 
     <button hidden="{{hide_loadmore? true:false}}" type="default" bindtap="onLoadMore">加载更多</button>

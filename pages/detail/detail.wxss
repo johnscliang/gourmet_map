@@ -21,25 +21,44 @@
     width: 2.5em;
     height: 2.5em;
     border: 1px solid lawngreen;
-    border-radius: 50%;
+    border-radius: 5%;
 }
 
 #nickname{
     vertical-align: middle;
 }
 
+.layout_left{
+    display: inline;
+}
+.layout_right{
+    display: inline;
+    margin-left: 10px;
+}
+
 .comment_layout{
     padding-top: 5px;
     padding-bottom: 5px;
+    display: flex;
 }
 
-.comment_text{
+.comment_text_nickname{
     font-size: 0.8em;
+    color: #5e5757;
+    display: block;
+}
+.comment_text_content{
+    font-size: 1em;
+    color: black;
+    display: block;
+}
+.comment_text_time{
+    font-size: 0.7em;
     color: gray;
+    display: block;
 }
 
 .comment_area{
-    /*float: left;*/
     display: inline-block;
     width: 78%;
     border: 1px solid lightgreen;
@@ -85,4 +104,9 @@
 
 .swiper-image{
     width: 100%;
+}
+
+.line{
+    height: 1px;
+    color: gray;
 }
