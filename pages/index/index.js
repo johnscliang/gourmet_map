@@ -151,6 +151,7 @@ Page({
   }
   //详情
   ,gotoDetail: function(e){
+    if(mLoading) return;
     var id = e.target.dataset.id;
     console.log('gotoDetail',e.target.dataset);
     wx.navigateTo({
