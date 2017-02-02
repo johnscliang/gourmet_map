@@ -18,6 +18,7 @@
    <view>
     <text class="title">{{gourmet.title}}</text>
   </view>
+  <text class="address">{{gourmet.address}}</text>
   <view class="footer">
     <image id="avatar" src="{{gourmet.user_avatar}}"></image>
     <text id="nickname">    {{gourmet.user_nickname}}  发布</text>

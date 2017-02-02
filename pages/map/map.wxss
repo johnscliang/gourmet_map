@@ -30,3 +30,7 @@
     text-align: center;
     padding: 10px;
 }
+
+.address{
+    color: gray;
+}

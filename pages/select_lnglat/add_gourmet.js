@@ -11,6 +11,17 @@ var headurl = "";//
 var headurlIndex = 0;
 var geopoint = null;
 
+var mDoing = false;
+
+function setLoading(yes){
+  mDoing = yes;
+  if(yes){
+    utils.showLoading('')
+  }else{
+    utils.hideLoading()
+  }
+}
+
 function clearData(){
    gourmet_title = "";
    gourmet_desc = "";
@@ -26,10 +37,12 @@ module.exports = {
   }
   //add pictures
   ,add_pics:function(){
+    if(mDoing)return;
     if(urls.length == 3){
       utils.showModal('错误','最多添加3张图片')
       return;
     }
+    
     var that = this;
       wx.chooseImage({
         count: 3 - urls.length, // 最多3张图片好了
@@ -43,7 +56,7 @@ module.exports = {
           if (tempFilePaths.length > 0) {
               
             for(var i = 0; i< tempFilePaths.length; i++){
-                utils.showLoading("上传中");
+                setLoading(true);
                 console.log("uploading...")
                 var name = utils.getFileName()+i+".jpg";//上传的图片的别名
                 var file = new Bmob.File(name, [tempFilePaths[i]]);
@@ -53,26 +66,22 @@ module.exports = {
                   if(res.url()){
                     urls.push(res.url());
                   }
-                  updatePrgress();
+                  //
+                  headurl = urls.length > 0 ? urls[0] : "";
+                  that.setData({
+                    urls: urls
+                    ,headurl: headurl
+                    ,show_headurl: headurl == "" ? false : true
+                  })
+                  setLoading(false);
+                  //
                 }, function (error) {
+                  setLoading(false);
                   console.log('upload fail',error);
                 })
             }
-
           }
 
-          function updatePrgress(){
-              headurl = urls.length > 0 ? urls[0] : "";
-              that.setData({
-                urls: urls
-                ,headurl: headurl
-                ,show_headurl: headurl == "" ? false : true
-              })
-              utils.showSuccess("请稍等一下就加载出来");
-              setTimeout(function(){
-                utils.hideLoading();
-              },2000)
-          }
         }
       })
   }
@@ -131,7 +140,7 @@ module.exports = {
 
   // 新增一个美食点
   ,add_gourmet: function(){
-    
+      if(mDoing) return utils.showModal('噢漏','请稍后再试');
       console.log("新增美食点");
       console.log('geopoint',geopoint);
       console.log('urls',urls);
@@ -151,7 +160,9 @@ module.exports = {
       if(gourmet_address.trim() === ""){
           return utils.showModal('错误','地址不能为空哦')
       }
-
+      //
+      setLoading(true);
+      //
       app.getUserInfo(userinfo=>{
         console.log(userinfo)
         var Gourmet = Bmob.Object.extend("gourmet");
@@ -173,14 +184,12 @@ module.exports = {
         gourmet.save(null, {
             success: function(result) {
                 console.log("创建成功, objectId:"+result.id);
-                utils.showSuccess("创建成功！");
                 clearData();
-                setTimeout(function(){
-                  wx.navigateBack()
-                },2000)
+                wx.navigateBack()
             },
             error: function(result, error) {
               // 添加失败
+              setLoading(false);
               console.log('创建失败',error);
             }
         });
