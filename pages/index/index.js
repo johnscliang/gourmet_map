@@ -141,6 +141,14 @@ Page({
   }
   ,onPullDownRefresh: function() {
     // Do something when pull down.
+    wx.stopPullDownRefresh();
+    var that = this;
+    getGourmet((gourmets)=>{
+      console.log('onShow',gourmets);
+      that.setData({
+        gourmets: gourmets
+      })
+    })
   }
   ,onReachBottom: function() {
     // Do something when page reach bottom.
