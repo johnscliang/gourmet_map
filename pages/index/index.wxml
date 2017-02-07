@@ -24,4 +24,6 @@
 <!--gourmet_list-->
 </view>
 
+<include src="../common/loading.wxml"/>
+
 <view style="height:2.8em;"/>

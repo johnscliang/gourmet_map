@@ -8,3 +8,19 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+
+.loading_area{
+  position: fixed;
+  top: 0px;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background: rgba(0, 0, 6, 0.5);
+}
+
+.loading_area image{
+  width: 35px;
+  height: 35px;
+  margin-top: 180px;
+}

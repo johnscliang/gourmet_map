@@ -1,0 +1,3 @@
+<view hidden="{{!show_loading}}" class="loading_area">
+    <image src="../../imgs/loading.gif"></image>
+</view>
