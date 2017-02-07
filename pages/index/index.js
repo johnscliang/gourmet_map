@@ -8,11 +8,7 @@ var mLoading = false;
 
 function setLoading(loading){
   mLoading = loading;
-  if(mLoading){
-    utils.showLoading("loading");
-  }else{
-    utils.hideLoading();
-  }
+  utils.showLoading(loading);
 }
 
 // get gourmets 

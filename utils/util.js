@@ -18,14 +18,10 @@ function formatNumber(n) {
 
 module.exports = {
   formatTime: formatTime
-  , showLoading: function (title) {
-    wx.showToast({
-      title: title == undefined ? "加载中" : title
-      , icon: 'loading'
+  , showLoading: function (loading) {
+    this.getCurrentPage().setData({
+      show_loading: loading
     })
-  }
-  , hideLoading: function () {
-    wx.hideToast()
   }
   , showSuccess: function (title) {
     wx.showToast({
@@ -45,6 +41,11 @@ module.exports = {
         }
       }
     })
+  }
+  //  获取当前页面
+  ,getCurrentPage:function(){
+    var arr = getCurrentPages();
+    return arr[arr.length - 1]
   }
 
 
