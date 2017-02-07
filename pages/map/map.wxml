@@ -6,7 +6,7 @@
 </map>
 
 <view hidden="{{show ? true:false}}" class="info">
-  <text>请点击感兴趣的点</text>
+  <text>请点击感兴趣的美食点</text>
 </view>
 
 <view hidden="{{show ? false:true}}" style="padding:10px">
