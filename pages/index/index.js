@@ -1,6 +1,7 @@
 //获取应用实例
 var app = getApp();
 var utils = require('../../utils/util.js');
+var analysis = require('../../utils/analysis.js');
 var Bmob = require('../../utils/bmob.js');
 
 var initFlag = false;
@@ -57,6 +58,9 @@ function getGourmet(cb){
                console.log('find error',error);
             }
         });
+        //analysis
+        analysis.addLocationPoint()
+
     })
 }
 
