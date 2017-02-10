@@ -54,10 +54,12 @@
       
     </view>
 
-    
+    <view hidden="{{!show_loading}}" id="view_more">
+      <image id="img_more" src="../../imgs/loading.gif"></image>
+    </view>
     
 </view>
 
-<include src="../common/loading.wxml"/>
+<!--<include src="../common/loading.wxml"/>-->
 
 </view>
