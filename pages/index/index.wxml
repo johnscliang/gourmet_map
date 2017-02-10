@@ -12,7 +12,7 @@
     <view>
       <text class="itemtext_title">{{item.title}}</text>
       <text class="create_time">创建时间：{{item.create_time_tag}}</text>
-      <image bindtap="gotoDetail" data-id="{{item.objectId}}" class="img" mode="aspectFill"
+      <image bindtap="gotoDetail" data-item="{{item}}" class="img" mode="aspectFill"
       src="{{item.head_url}}"></image>
       <text class="address">地址：{{item.address}}</text>
     </view>

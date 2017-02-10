@@ -46,9 +46,9 @@ function getGourmet(cb){
           success: function(gourmets) {
               var jsonArray = JSON.parse(JSON.stringify(gourmets));
               app.globalData.gourmets = jsonArray;
-              for(var x in jsonArray){
-                  app.globalData.gourmetsMap[jsonArray[x].objectId] = jsonArray[x];
-              }
+              // for(var x in jsonArray){
+              //     app.globalData.gourmetsMap[jsonArray[x].objectId] = jsonArray[x];
+              // }
               //
               cb(app.globalData.gourmets);
               setLoading(false)
@@ -102,8 +102,7 @@ Page({
   //添加美食点点
   ,addPoint: function(){
     wx.navigateTo({
-      // url: '../select_lnglat/select_lnglat'
-      url: '../add_gourmet/add_gourmet'
+      url: '/pages/add_gourmet/add_gourmet'
     })
   }
 
@@ -156,10 +155,10 @@ Page({
   //详情
   ,gotoDetail: function(e){
     if(mLoading) return;
-    var id = e.target.dataset.id;
-    console.log('gotoDetail',e.target.dataset);
+    var item = e.target.dataset.item;
+    console.log('gotoDetail',item);
     wx.navigateTo({
-      url: '../detail/detail?id='+id
+      url: '/pages/detail/detail?item='+JSON.stringify(item)
     })
   }
   ,onShareAppMessage: function () {

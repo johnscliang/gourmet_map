@@ -56,7 +56,8 @@ Page({
   }
   ,onLoad: function(option){
       var that = this;
-      gourmet = app.globalData.gourmetsMap[option.id];
+      //console.log('option.item',option.item);
+      gourmet = JSON.parse(option.item);
       console.log(gourmet.urls);
       app.getSystemInfo((width, height) => {
         that.setData({
@@ -141,7 +142,8 @@ Page({
     return {
       title: gourmet.title,
       desc: gourmet.description,
-      path: '/pages/detail/detail?id='+gourmet.objectId
+      path: '/pages/detail/detail?item='+JSON.stringify(gourmet)
+      //path: '/pages/detail/detail?id='+gourmet.objectId
     }
   }
 
