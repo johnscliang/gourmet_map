@@ -162,5 +162,12 @@ Page({
       url: '../detail/detail?id='+id
     })
   }
+  ,onShareAppMessage: function () {
+    return {
+      title: '地道美食地图',
+      desc: '发现身边最地道的美食',
+      path: '/pages/index/index'
+    }
+  }
 
 })
