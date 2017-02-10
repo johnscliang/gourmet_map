@@ -144,6 +144,11 @@ Page({
       path: '/pages/detail/detail?id='+gourmet.objectId
     }
   }
+
+  ,onReachBottom: function() {
+    // Do something when page reach bottom.
+    console.log('bottom')
+  }
 })
 
 

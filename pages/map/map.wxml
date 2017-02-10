@@ -2,7 +2,7 @@
  markers="{{markers}}"
  style="width:{{map_width}}px;height:{{map_height}}px"
  bindmarkertap="markertap"
- show-location scale="20" controls="{{controls}}">
+ show-location scale="12" controls="{{controls}}">
 </map>
 
 <view hidden="{{show ? true:false}}" class="info">
