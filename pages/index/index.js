@@ -98,7 +98,8 @@ Page({
   //添加美食点点
   ,addPoint: function(){
     wx.navigateTo({
-      url: '../select_lnglat/select_lnglat'
+      // url: '../select_lnglat/select_lnglat'
+      url: '../add_gourmet/add_gourmet'
     })
   }
 

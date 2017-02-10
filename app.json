@@ -2,7 +2,7 @@
   "pages":[
     "pages/index/index"
     ,"pages/map/map"
-    ,"pages/select_lnglat/select_lnglat"
+    ,"pages/add_gourmet/add_gourmet"
     ,"pages/detail/detail"
   ]
   ,"window":{
