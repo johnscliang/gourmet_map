@@ -147,7 +147,8 @@ Page({
 
   ,onReachBottom: function() {
     // Do something when page reach bottom.
-    console.log('bottom')
+    console.log('bottom');
+    this.onLoadMore();
   }
 })
 

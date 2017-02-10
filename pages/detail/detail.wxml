@@ -54,7 +54,7 @@
       
     </view>
 
-    <button hidden="{{hide_loadmore? true:false}}" type="default" bindtap="onLoadMore">加载更多</button>
+    
     
 </view>
 
