@@ -12,11 +12,7 @@ var mLoading = false;
 
 function setLoading(loading){
   mLoading = loading;
-  if(loading){
-    utils.showLoading()
-  }else{
-    utils.hideLoading()
-  }
+  utils.showLoading(loading);
 }
 
 //comments
