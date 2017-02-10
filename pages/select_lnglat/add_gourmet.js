@@ -15,11 +15,7 @@ var mDoing = false;
 
 function setLoading(yes){
   mDoing = yes;
-  if(yes){
-    utils.showLoading('')
-  }else{
-    utils.hideLoading()
-  }
+  utils.showLoading(yes);
 }
 
 function clearData(){

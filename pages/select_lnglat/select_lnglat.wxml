@@ -1,3 +1,4 @@
+<view class="main">
 
 <view style="padding:10px">
     <button bindtap="chooseLocation" type="primary">重新选择位置</button>
@@ -37,5 +38,9 @@
         <button bindtap="add_gourmet" style="width:5em" type="primary">提交</button>
         <view style="height:12em"/>
     </view>
+
+</view>
+
+<include src="../common/loading.wxml"/>
 
 </view>

@@ -104,12 +104,7 @@ Page({
 
   ,onLoad: function(options) {
     // Do some initialize when page load.
-    app.getSystemInfo((width, height) => {
-      that.setData({
-           scroll_width: width - 10
-          ,scroll_height: height - 200
-        })
-    })
+    
   }
   ,onReady: function() {
     var that = this;
