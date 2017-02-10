@@ -1,6 +1,16 @@
 # gourmet_map
 微信小程序-美食地图（v1.0.0）——“发现最地道的美食”。
 
+# 项目地址
+![小程序二维码](http://wx2.sinaimg.cn/mw690/8f8f5f45gy1fclqewxnj1j20by0dmdgw.jpg)
+
+# 截图
+![](http://wx4.sinaimg.cn/mw690/8f8f5f45gy1fclr3k0bgtj21kw0p9n6y.jpg)
+
+# 项目简介
+
+### 二维码地址
+
 # 项目说明
 
 ## 功能清单
