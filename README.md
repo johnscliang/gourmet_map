@@ -1,5 +1,5 @@
 # gourmet_map
-微信小程序-美食地图（v1.0.0）——“发现最地道的美食”。
+微信小程序-美食地图（v1.0.5）——“发现最地道的美食”。
 
 # 项目地址
 ![小程序二维码](http://wx3.sinaimg.cn/mw690/8f8f5f45gy1fclsqoy7g2j2076086jrz.jpg)
@@ -26,7 +26,7 @@
 
 # 准备工作
 * 请注册一个Bmob账号，新建一个应用，配置微信appid和secret，并获取Bmob应用的 Application ID和REST API KEY。 
-* 登录微信公众号平台https://mp.weixin.qq.com/，配置小程序的请求地址。参照：http://docs.bmob.cn/data/wechatApp/a_faststart/doc/index.html
+* 登录微信公众号平台https://mp.weixin.qq.com/ ，配置小程序的请求地址。参照：http://docs.bmob.cn/data/wechatApp/a_faststart/doc/index.html
 
 # 快速开始
 第一步，```git clone git@github.com:LanceCong/gourmet_map.git```，下载代码。    
@@ -35,12 +35,15 @@
 第四步，然后就初始化好项目了，导入微信的的“web开发者工具”，扫码运行吧。
 
 # 需要帮助
-* 一个icon（我设想是一个包子或烧卖什么的，在一个地图上）
-* ~~Bmob更高权限~~(目前来看貌似够用了)
-* ~~一个认证的小程序账号~~（已有人愿意年后提供帮助）
+
+- [ ] 一个icon（有更好的创意的话）
+- [x] Bmob更高权限(目前来看貌似够用了)
+- [x] 一个认证的小程序账号。
+- [ ] 更好的UI设计
 
 # BUG 
 * 发现坑欢迎修复提交合并。
 
 # TODO
-* 美食点按距离排序（貌似是Bmob的bug，near方法没用，年后再问客服）
+- [x] 美食点按距离排序（貌似是Bmob的bug，near方法没用，年后再问客服）
+- [ ] UI优化
