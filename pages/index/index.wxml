@@ -11,7 +11,7 @@
   
     <view>
       <text class="itemtext_title">{{item.title}}</text>
-       <text class="sub_title">{{item.distance}}km</text>
+       <text class="sub_title">离我{{item.distance}}km</text>
       <view style="text-align:right">
       <image bindtap="gotoDetail" data-item="{{item}}" class="img" mode="aspectFill"
       src="{{item.head_url}}"></image>
