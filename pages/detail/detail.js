@@ -13,6 +13,7 @@ var mLoading = false;
 function setLoading(loading){
   mLoading = loading;
   utils.showLoading(loading);
+  loading ? wx.showNavigationBarLoading():wx.hideNavigationBarLoading()
 }
 
 //comments
