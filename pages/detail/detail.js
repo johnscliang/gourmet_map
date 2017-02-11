@@ -56,18 +56,47 @@ Page({
   }
   ,onLoad: function(option){
       var that = this;
-      //console.log('option.item',option.item);
-      gourmet = JSON.parse(option.item);
-      console.log(gourmet.urls);
+      console.log('option',option);
+      if(option.item){
+        gourmet = JSON.parse(option.item);
+        that.setData({
+          gourmet: gourmet 
+        })
+        loadFirstPage(this)
+      }else{
+        setLoading(true);
+        var Gourmet = Bmob.Object.extend("gourmet");
+        var query = new Bmob.Query(Gourmet);
+        query.get(option.id, {
+          success: function(result) {
+            setLoading(false);
+            gourmet = JSON.parse(JSON.stringify(result));
+            that.setData({
+              gourmet: gourmet 
+            })
+            loadFirstPage(this);
+          },
+          error: function(object, error) {
+            // 查询失败
+            setLoading(false);
+            utils.showModal('错误','请求出错');
+          }
+        });
+
+        that.setData({
+          gourmet: gourmet 
+        })
+        loadFirstPage(this);
+      }
+      
+      //
       app.getSystemInfo((width, height) => {
         that.setData({
           img_width: width
           ,img_height: width * 9/16
-          ,gourmet: gourmet 
           })
       })  
-      //
-      loadFirstPage(this)
+      
   }
 
   ,preview: function(){
