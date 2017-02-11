@@ -3,6 +3,7 @@ var Bmob = require('../../utils/bmob.js');
 var utils = require('../../utils/util.js');
 
 var markers = [];
+var gourmetsMap = {};
 
 Page({
   data: {
@@ -18,7 +19,7 @@ Page({
   ,markertap(e) {
     console.log(e);
     //
-    var gourmet = app.globalData.gourmetsMap[e.markerId];
+    var gourmet = gourmetsMap[e.markerId];
     this.setData({
       gourmet: gourmet
       ,show: true
@@ -47,6 +48,8 @@ Page({
     //
     var gourmets = app.globalData.gourmets;
     for(var x in gourmets){
+        //
+        gourmetsMap[gourmets[x].objectId] = gourmets[x];
         var marker = {
           id: gourmets[x].objectId
           ,iconPath: "../../imgs/ic_position.png"
@@ -65,9 +68,9 @@ Page({
 
   //
   ,gotoDetail: function(e){
-    var id = e.target.dataset.id;
+    var item = e.target.dataset.item;
     wx.navigateTo({
-      url: '../detail/detail?id='+id
+      url: '../detail/detail?item='+JSON.stringify(item)
     })
   }
 })

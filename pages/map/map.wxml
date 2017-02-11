@@ -10,10 +10,10 @@
 </view>
 
 <view hidden="{{show ? false:true}}" style="padding:10px">
-  <text bindtap="gotoDetail" data-id="{{gourmet.objectId}}" class="tips">点击查看详情</text>
+  <text bindtap="gotoDetail" data-item="{{gourmet}}" class="tips">点击查看详情</text>
   
 
-  <image bindtap="gotoDetail" data-id="{{gourmet.objectId}}" class="img" mode="aspectFill"
+  <image bindtap="gotoDetail" data-item="{{gourmet}}" class="img" mode="aspectFill"
    src="{{gourmet.head_url}}"></image>
    <view>
     <text class="title">{{gourmet.title}}</text>
