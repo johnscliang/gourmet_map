@@ -35,7 +35,7 @@ function getGourmet(cb){
         // location附近的位置
         //query.near("location", point);
         //query.withinGeoBox("location", southwestOfSF, northeastOfSF);
-        //query.withinKilometers("location", point, 800);
+        query.withinKilometers("location", point, 3000);
         // 返回10个地点数据
         query.limit(50);
         //
