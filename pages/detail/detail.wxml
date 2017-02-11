@@ -7,7 +7,7 @@
 <swiper style="height:{{img_height}}px" indicator-dots="{{indicatorDots}}"
   bindtap="preview"
   autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-  <block wx:for="{{gourmet.urls}}">
+  <block wx:for="{{gourmet.urls}}" wx:key="*this">
     <swiper-item>
       <image src="{{item}}" mode="aspectFill" class="swiper-image" width="{{img_width}}" height="{{img_height}}"/>
     </swiper-item>
@@ -37,7 +37,7 @@
     </view>
     <view style="height:10px"/>
 
-    <view class="comment_layout" wx:for="{{comments}}">
+    <view class="comment_layout" wx:for="{{comments}}" wx:key="objectId">
       
       <view style="display:flex;padding: 0px 10px;">
         <view class="layout_left">

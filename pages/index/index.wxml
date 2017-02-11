@@ -6,7 +6,7 @@
 
 <view id="gourmet_list">
   
-  <view wx:for="{{gourmets}}">
+  <view wx:for="{{gourmets}}" wx:key="objectId">
     <view style="height:1em;"/>
   
     <view>
