@@ -1,6 +1,7 @@
 //获取应用实例
 var app = getApp();
 var utils = require('../../utils/util.js');
+var getDistance = require('../../utils/distance.js').getDistance;
 var analysis = require('../../utils/analysis.js');
 var Bmob = require('../../utils/bmob.js');
 
@@ -33,7 +34,7 @@ function getGourmet(cb){
         var query = new Bmob.Query(Gourmet);
         // location附近的位置
         //query.near("location", point);
-        query.withinGeoBox("location", southwestOfSF, northeastOfSF);
+        //query.withinGeoBox("location", southwestOfSF, northeastOfSF);
         //query.withinKilometers("location", point, 800);
         // 返回10个地点数据
         query.limit(50);
@@ -45,6 +46,23 @@ function getGourmet(cb){
         query.find({
           success: function(gourmets) {
               var jsonArray = JSON.parse(JSON.stringify(gourmets));
+//distance
+for(var x in jsonArray){
+  jsonArray[x].distance = getDistance(locationInfo.latitude,locationInfo.longitude,jsonArray[x].location.latitude,jsonArray[x].location.longitude)
+}
+//排序
+for(var i = 0; i < jsonArray.length;i++){
+    for(var j = i; j < jsonArray.length;j++){
+        if(jsonArray[i].distance && jsonArray[j].distance){
+            if(jsonArray[i].distance > jsonArray[j].distance){
+                var temp = jsonArray[i];
+                jsonArray[i] = jsonArray[j];
+                jsonArray[j] = temp;
+            }
+        }
+    }
+}
+
               app.globalData.gourmets = jsonArray;
               // for(var x in jsonArray){
               //     app.globalData.gourmetsMap[jsonArray[x].objectId] = jsonArray[x];
