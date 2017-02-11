@@ -45,11 +45,12 @@
     color: gray;
     padding-left: 10px;
 }
-.create_time{
+.sub_title{
     display: block;
     text-align: right;
-    font-size: 10px;
-    font-style: italic;
+    font-size: 12px;
+    /*font-style: italic;*/
+    color: darkorange;
     padding-right: 10px;
     margin-top: 5px;
     float: right;
@@ -58,4 +59,12 @@
 .line{
     height: 1px;
     background: limegreen;
+}
+
+.distance{
+    padding: 10px;
+    position: relative;
+    top: -25px;
+    font-size: 12px;
+    /*color: white;*/
 }
