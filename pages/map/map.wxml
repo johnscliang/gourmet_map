@@ -9,6 +9,7 @@
 
 <scroll-view class="recommend_scroll_x_box" scroll-x="true">
       <view class="recommend_hot_box" wx:for="{{gourmets}}">
+        <view class="title">{{item.title}}</view>
         <image mode="aspectFit" src="{{item.head_url}}" class="recommend_hot_image"></image>
       </view>
 </scroll-view>
