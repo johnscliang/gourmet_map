@@ -2,12 +2,11 @@
 var app = getApp();
 var API = require('../../api/API.js');
 var utils = require('../../utils/util.js');
-var analysis = require('../../utils/analysis.js');
 
 var mGourmetList = [];
 var initFlag = false;
 var mLoading = false;
-var PAGE_SIZE = 10;
+var PAGE_SIZE = 50;
 var mPage = 1;
 var mIsmore = false;
 
@@ -41,7 +40,7 @@ Page({
   ,showMap: function() {
     var that = this;
     if(mLoading) return;//等待加载完
-    if(mGourmetList > 0){
+    if(mGourmetList.length > 0){
         app.globalData.gourmets = mGourmetList;
         gotoMap()
     }else{
@@ -77,7 +76,7 @@ Page({
 
   ,onLoad: function(options) {
     // Do some initialize when page load.
-    
+    API.addLocationPoint()
   }
   ,onReady: function() {
     // Do something when page ready.
