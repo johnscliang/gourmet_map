@@ -1,6 +1,6 @@
 <view class="main">
 
-<map id="map" longitude="{{longitude}}" latitude="{{latitude}}" 
+<map id="map" longitude="{{longitude}}" latitude="{{latitude}}"
  markers="{{markers}}"
  style="width:{{map_width}}px;height:{{map_height}}px"
  bindmarkertap="markertap"
@@ -25,30 +25,8 @@
       <text class="address">{{item.data.address}}</text>
     </view>
 
-      <!--<view>{{item.data.title}}</view>
-      <image src="{{item.data.head_url}}" mode="aspectFill" class="swiper-image" width="{{map_width * 2/3}}" height="{{map_width * 1/2}}"/>-->
     </swiper-item>
   </block>
 </swiper>
-
-<!--<view hidden="{{show ? true:false}}" class="info">
-  <text>请点击感兴趣的美食点</text>
-</view>
-
-<view hidden="{{show ? false:true}}" style="padding:10px">
-  <text bindtap="gotoDetail" data-item="{{gourmet}}" class="tips">点击查看详情</text>
-  
-
-  <image bindtap="gotoDetail" data-item="{{gourmet}}" class="img" mode="aspectFill"
-   src="{{gourmet.head_url}}"></image>
-   <view>
-    <text class="title">{{gourmet.title}}</text>
-  </view>
-  <text class="address">{{gourmet.address}}</text>
-  <view class="footer">
-    <image id="avatar" src="{{gourmet.user_avatar}}"></image>
-    <text id="nickname">    {{gourmet.user_nickname}}  发布</text>
-  </view>
-</view>-->
 
 </view>

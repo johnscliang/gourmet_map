@@ -211,4 +211,10 @@ Page({
       })
 
   }
+
+
+  //组织事件冒泡
+  ,stopScroll: function(){
+
+  }
 });

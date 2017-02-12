@@ -182,6 +182,10 @@ Page({
     console.log('bottom');
     this.onLoadMore();
   }
+  //组织事件冒泡
+  ,stopScroll: function(){
+
+  }
 })
 
 

@@ -21,8 +21,7 @@ Page({
     //
     var gourmet = gourmetsMap[e.markerId];
     this.setData({
-      gourmet: gourmet
-      ,show: true
+      current: gourmet.index
     })
   }
   ,controltap(e) {
@@ -49,22 +48,27 @@ Page({
     var gourmets = app.globalData.gourmets;
     for(var x in gourmets){
         //
+        gourmets[x].index = x;
         gourmetsMap[gourmets[x].objectId] = gourmets[x];
         var marker = {
           id: gourmets[x].objectId
-          ,iconPath: "../../imgs/ic_position_nor.png"
+          ,iconPath: "/imgs/ic_position_nor.png"
           ,longitude: gourmets[x].location.longitude
           ,latitude:  gourmets[x].location.latitude
           ,width: 30
           ,height: 30
           ,data: gourmets[x]
         }
-        console.log('marker',marker);
-        markers.push(marker);
-        that.setData({
-          markers: markers
-        })
+        //console.log('marker',marker);
+        markers.push(marker);  
     }
+    if(markers.length > 0){
+      markers[0].iconPath = "/imgs/ic_position_sel.png";
+      that.setData({
+          markers: markers
+      })
+    }
+    
   }
 
   //
@@ -78,8 +82,8 @@ Page({
   //
   ,currentChange: function(e){
       var current = e.detail.current;
-      console.log('current',current);
-      console.log('data',markers[current].data);
+      //console.log('current',current);
+      //console.log('data',markers[current].data);
       var gourmet = markers[current].data;
       this.setData({
         longitude: gourmet.location.longitude
@@ -87,12 +91,17 @@ Page({
       });
       //
       for(var i = 0; i<markers.length; i++){
-        markers[i].iconPath = "../../imgs/ic_position_nor.png"
+        markers[i].iconPath = "/imgs/ic_position_nor.png"
       }
-      markers[current].iconPath = "../../imgs/ic_position_sel.png";
+      markers[current].iconPath = "/imgs/ic_position_sel.png";
       this.setData({
           markers: markers
       })
+  }
+
+  //组织事件冒泡
+  ,stopScroll: function(){
+
   }
 
 })
