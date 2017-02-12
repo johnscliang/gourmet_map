@@ -111,12 +111,3 @@
     background: lightgrey;
     margin-top: 5px;
 }
-
-#view_more{
-    text-align: center
-}
-
-#img_more{
-    width: 30px;
-    height: 30px;
-}

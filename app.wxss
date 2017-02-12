@@ -24,3 +24,12 @@
   height: 35px;
   margin-top: 180px;
 }
+
+#view_more{
+    text-align: center
+}
+
+#img_more{
+    width: 30px;
+    height: 30px;
+}

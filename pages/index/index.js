@@ -1,97 +1,48 @@
 //获取应用实例
 var app = getApp();
+var API = require('../../api/API.js');
 var utils = require('../../utils/util.js');
-var getDistance = require('../../utils/distance.js').getDistance;
 var analysis = require('../../utils/analysis.js');
-var Bmob = require('../../utils/bmob.js');
 
+var mGourmetList = [];
 var initFlag = false;
 var mLoading = false;
+var PAGE_SIZE = 10;
+var mPage = 1;
+var mIsmore = false;
 
 function setLoading(loading){
   mLoading = loading;
   utils.showLoading(loading);
 }
 
-// get gourmets 
-function getGourmet(cb){
-  setLoading(true)
-  app.getLocationInfo(locationInfo=>{
-
-       var Gourmet = Bmob.Object.extend("gourmet");
-       console.log('locationInfo',locationInfo);
-        var point = new Bmob.GeoPoint({
-          latitude: locationInfo.latitude
-          ,longitude: locationInfo.longitude
-        });
-        var southwestOfSF = new Bmob.GeoPoint(
-          locationInfo.latitude - 4.5 , locationInfo.longitude - 5.4);
-
-        var northeastOfSF = new Bmob.GeoPoint(
-          locationInfo.latitude + 3.1, locationInfo.longitude + 3.9);
-
-        // 创建查询
-        var query = new Bmob.Query(Gourmet);
-        // location附近的位置
-        //query.near("location", point);
-        //query.withinGeoBox("location", southwestOfSF, northeastOfSF);
-        query.withinKilometers("location", point, 3000);
-        // 返回10个地点数据
-        query.limit(50);
-        //
-        //query.skip(pagesize * (page))
-        //按修改时间
-        query.descending("updatedAt");
-        // 查询
-        query.find({
-          success: function(gourmets) {
-              var jsonArray = JSON.parse(JSON.stringify(gourmets));
-//distance
-for(var x in jsonArray){
-  jsonArray[x].distance = getDistance(locationInfo.latitude,locationInfo.longitude,jsonArray[x].location.latitude,jsonArray[x].location.longitude)
-}
-//排序
-for(var i = 0; i < jsonArray.length;i++){
-    for(var j = i; j < jsonArray.length;j++){
-        if(jsonArray[i].distance && jsonArray[j].distance){
-            if(jsonArray[i].distance > jsonArray[j].distance){
-                var temp = jsonArray[i];
-                jsonArray[i] = jsonArray[j];
-                jsonArray[j] = temp;
-            }
-        }
-    }
-}
-
-              app.globalData.gourmets = jsonArray;
-              // for(var x in jsonArray){
-              //     app.globalData.gourmetsMap[jsonArray[x].objectId] = jsonArray[x];
-              // }
-              //
-              cb(app.globalData.gourmets);
-              setLoading(false)
-          }
-           ,error: function(error) {
-               setLoading(false)
-               console.log('find error',error);
-            }
-        });
-        //analysis
-        analysis.addLocationPoint()
-
+function loadFirstPage(that){
+  setLoading(true);
+  API.getGourmetByPage(1, PAGE_SIZE, (gourmets)=>{
+    console.log('loadFirstPage',gourmets);
+    setLoading(false);
+    mGourmetList = gourmets;
+    mPage = 1;
+    mIsmore = true;
+    that.setData({
+      gourmets: mGourmetList
+      ,ismore: mIsmore        
     })
+  })
 }
 
 Page({
   data: {
     app_name: '美食地图'
-    ,gourmets:[]
+    ,ismore: mIsmore
+    ,gourmets: mGourmetList
   }
   //跳转到地图
   ,showMap: function() {
     var that = this;
     if(mLoading) return;//等待加载完
-    if(app.globalData.gourmets.length > 0){
+    if(mGourmetList > 0){
+        app.globalData.gourmets = mGourmetList;
         gotoMap()
     }else{
         // 没有点的情况
@@ -129,26 +80,14 @@ Page({
     
   }
   ,onReady: function() {
-    var that = this;
     // Do something when page ready.
     initFlag = true;
-    getGourmet((gourmets)=>{
-      console.log('onReady',gourmets);
-      that.setData({
-        gourmets: gourmets
-      })
-    })
+    loadFirstPage(this);
   }
   ,onShow: function() {
     // Do something when page show.
     if(!initFlag) return;
-    var that = this;
-    getGourmet((gourmets)=>{
-      console.log('onShow',gourmets);
-      that.setData({
-        gourmets: gourmets
-      })
-    })
+    loadFirstPage(this);
   }
   ,onHide: function() {
     // Do something when page hide.
@@ -159,16 +98,12 @@ Page({
   ,onPullDownRefresh: function() {
     // Do something when pull down.
     wx.stopPullDownRefresh();
-    var that = this;
-    getGourmet((gourmets)=>{
-      console.log('onShow',gourmets);
-      that.setData({
-        gourmets: gourmets
-      })
-    })
+    if(mLoading) return;
+    this.onShow();
   }
   ,onReachBottom: function() {
     // Do something when page reach bottom.
+    this.loadMore()
   }
   //详情
   ,gotoDetail: function(e){
@@ -185,6 +120,23 @@ Page({
       desc: '发现身边最地道的美食',
       path: '/pages/index/index'
     }
+  }
+
+  ,loadMore:function(){
+    if(!mIsmore) return;
+    wx.showNavigationBarLoading();
+    var that = this;
+    API.getGourmetByPage(mPage+1, PAGE_SIZE, (gourmets)=>{
+      console.log('loadMore',gourmets);
+      mIsmore = (gourmets.length > 0);
+      mPage++;
+      mGourmetList = mGourmetList.concat(gourmets);
+      that.setData({
+        gourmets: mGourmetList
+        ,ismore: mIsmore  
+      })
+      wx.hideNavigationBarLoading()
+    })
   }
 
 })
