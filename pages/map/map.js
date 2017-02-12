@@ -12,6 +12,29 @@ Page({
     ,controls: [{}]
     ,longitude: 113.298569
     ,latitude: 23.095207
+    ,hotList: [
+      {
+        pic: '/imgs/temp.jpg',
+        title: '玻璃棧道',
+        desc: '22W人去過'
+      }, {
+        pic: '/imgs/temp.jpg',
+        title: '玻璃棧道',
+        desc: '22W人去過'
+      }, {
+        pic: '/imgs/temp.jpg',
+        title: '玻璃棧道',
+        desc: '22W人去過'
+      }, {
+        pic: '/imgs/temp.jpg',
+        title: '玻璃棧道',
+        desc: '22W人去過'
+      }, {
+        pic: '/imgs/temp.jpg',
+        title: '玻璃棧道',
+        desc: '22W人去過'
+      }
+    ]
   }
   ,regionchange(e) {
     console.log(e.type)
@@ -62,6 +85,7 @@ Page({
         markers.push(marker);
         that.setData({
           markers: markers
+          ,gourmets: gourmets
         })
     }
   }

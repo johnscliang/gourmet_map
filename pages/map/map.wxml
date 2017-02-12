@@ -1,3 +1,5 @@
+<view class="main">
+
 <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" 
  markers="{{markers}}"
  style="width:{{map_width}}px;height:{{map_height}}px"
@@ -5,7 +7,15 @@
  show-location scale="12" controls="{{controls}}">
 </map>
 
-<view hidden="{{show ? true:false}}" class="info">
+<scroll-view class="recommend_scroll_x_box" scroll-x="true">
+      <view class="recommend_hot_box" wx:for="{{gourmets}}">
+        <image mode="aspectFit" src="{{item.head_url}}" class="recommend_hot_image"></image>
+      </view>
+</scroll-view>
+
+
+
+<!--<view hidden="{{show ? true:false}}" class="info">
   <text>请点击感兴趣的美食点</text>
 </view>
 
@@ -23,4 +33,8 @@
     <image id="avatar" src="{{gourmet.user_avatar}}"></image>
     <text id="nickname">    {{gourmet.user_nickname}}  发布</text>
   </view>
+</view>-->
+
+
+
 </view>

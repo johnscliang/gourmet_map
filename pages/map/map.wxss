@@ -34,3 +34,27 @@
 .address{
     color: gray;
 }
+
+.recommend_scroll_x_box {
+  height: 245rpx;
+  white-space: nowrap;
+  display: flex;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.recommend_hot_box {
+  width: 500rpx;
+  height: 300rpx;
+  margin-right: 24rpx;
+  display: inline-block;
+}
+
+.recommend_hot_image {
+  width: 500rpx;
+  height: 300rpx;
+}
