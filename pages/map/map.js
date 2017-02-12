@@ -57,6 +57,7 @@ Page({
           ,latitude:  gourmets[x].location.latitude
           ,width: 30
           ,height: 30
+          ,data: gourmets[x]
         }
         console.log('marker',marker);
         markers.push(marker);

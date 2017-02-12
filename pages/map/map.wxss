@@ -23,7 +23,11 @@
 }
 
 .tips{
-    color: dodgerblue
+    width: 100%;
+    text-align: center;
+    color: gray;
+    padding: 5px 0px 5px 0px;
+    font-size: 0.6em;
 }
 
 .info{
@@ -31,6 +35,25 @@
     padding: 10px;
 }
 
+.itemtext_title{
+    font-weight: 700;
+}
+
 .address{
+    display: block;
     color: gray;
+}
+.sub_title{
+    display: block;
+    text-align: right;
+    font-size: 12px;
+    color: darkorange;
+    float: right;
+}
+
+.line{
+    height: 1px;
+    background: limegreen;
+    margin-bottom: 5px;
+    padding: 0px 10px;
 }

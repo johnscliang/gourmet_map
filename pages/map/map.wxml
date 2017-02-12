@@ -1,3 +1,5 @@
+<view class="main">
+
 <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" 
  markers="{{markers}}"
  style="width:{{map_width}}px;height:{{map_height}}px"
@@ -5,7 +7,30 @@
  show-location scale="12" controls="{{controls}}">
 </map>
 
-<view hidden="{{show ? true:false}}" class="info">
+<view class="tips">请左右滑动下面切换美食点↓↓↓</view>
+<view class="line"/>
+
+<swiper current="{{current}}" style="height:{{map_width}}px" bindtap="preview">
+  <block wx:for="{{markers}}" wx:key="id">
+    <swiper-item>
+    <view style="padding: 0px 10px;">
+      <text class="itemtext_title">{{item.data.title}}</text>
+       <text class="sub_title">离我{{item.data.distance}}km</text>
+      <view style="text-align:right">
+      <image bindtap="gotoDetail" data-item="{{item.data}}" class="img" mode="aspectFill"
+      src="{{item.data.head_url}}"></image>
+      <text hidden="true" class="distance">{{item.data.distance}}km</text>
+      </view>
+      <text class="address">{{item.data.address}}</text>
+    </view>
+
+      <!--<view>{{item.data.title}}</view>
+      <image src="{{item.data.head_url}}" mode="aspectFill" class="swiper-image" width="{{map_width * 2/3}}" height="{{map_width * 1/2}}"/>-->
+    </swiper-item>
+  </block>
+</swiper>
+
+<!--<view hidden="{{show ? true:false}}" class="info">
   <text>请点击感兴趣的美食点</text>
 </view>
 
@@ -23,4 +48,6 @@
     <image id="avatar" src="{{gourmet.user_avatar}}"></image>
     <text id="nickname">    {{gourmet.user_nickname}}  发布</text>
   </view>
+</view>-->
+
 </view>
