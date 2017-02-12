@@ -10,7 +10,8 @@
 <view class="tips">请左右滑动下面切换美食点↓↓↓</view>
 <view class="line"/>
 
-<swiper current="{{current}}" style="height:{{map_width}}px" bindtap="preview">
+<swiper current="{{current}}" style="height:{{map_width}}px"
+ bindchange="currentChange">
   <block wx:for="{{markers}}" wx:key="id">
     <swiper-item>
     <view style="padding: 0px 10px;">

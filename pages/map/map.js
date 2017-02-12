@@ -52,7 +52,7 @@ Page({
         gourmetsMap[gourmets[x].objectId] = gourmets[x];
         var marker = {
           id: gourmets[x].objectId
-          ,iconPath: "../../imgs/ic_position.png"
+          ,iconPath: "../../imgs/ic_position_nor.png"
           ,longitude: gourmets[x].location.longitude
           ,latitude:  gourmets[x].location.latitude
           ,width: 30
@@ -74,4 +74,25 @@ Page({
       url: '../detail/detail?item='+JSON.stringify(item)
     })
   }
+
+  //
+  ,currentChange: function(e){
+      var current = e.detail.current;
+      console.log('current',current);
+      console.log('data',markers[current].data);
+      var gourmet = markers[current].data;
+      this.setData({
+        longitude: gourmet.location.longitude
+        ,latitude: gourmet.location.latitude
+      });
+      //
+      for(var i = 0; i<markers.length; i++){
+        markers[i].iconPath = "../../imgs/ic_position_nor.png"
+      }
+      markers[current].iconPath = "../../imgs/ic_position_sel.png";
+      this.setData({
+          markers: markers
+      })
+  }
+
 })
