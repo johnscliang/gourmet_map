@@ -86,6 +86,8 @@ Page({
   ,onShow: function() {
     // Do something when page show.
     if(!initFlag) return;
+    if(!app.flags.refresh_index) return;
+    app.flags.refresh_index = false;
     loadFirstPage(this);
   }
   ,onHide: function() {

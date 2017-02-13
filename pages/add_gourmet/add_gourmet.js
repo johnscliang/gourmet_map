@@ -200,6 +200,7 @@ Page({
             success: function(result) {
                 console.log("创建成功, objectId:"+result.id);
                 clearData();
+                app.flags.refresh_index = true;
                 wx.navigateBack()
             },
             error: function(result, error) {

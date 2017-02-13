@@ -50,6 +50,10 @@ App({
     ,gourmets: []
     ,gourmetsMap:{}
   }
+
+  ,flags:{
+    refresh_index: false
+  }
 })
 
 //网络获取用户信息
