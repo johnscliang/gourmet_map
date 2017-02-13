@@ -16,7 +16,7 @@
     color: #454545;
 }
 
-#avatar{
+.avatar{
     vertical-align: middle;
     width: 2.5em;
     height: 2.5em;
@@ -24,8 +24,29 @@
     border-radius: 5%;
 }
 
-#nickname{
+.footer{
+    padding: 3px 10px;
+    /*text-align: right;*/
+    line-height: 1em;
+}
+
+#publisher_avatar{
     vertical-align: middle;
+    width: 1em;
+    height: 1em;
+    border: 1px solid lightgrey;
+    border-radius: 5%;
+}
+
+#publisher{
+    font-size: 0.5em;
+    color: gray;
+    vertical-align: middle;
+}
+
+#create_time_tag{
+    font-size: 0.5em;
+    color: gray;
 }
 
 .layout_left{

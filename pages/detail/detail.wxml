@@ -16,7 +16,13 @@
 
 </view>
 
-<view style="padding:10px">
+<view class="footer">
+    <image id="publisher_avatar" src="{{gourmet.user_avatar}}"></image>
+    <text id="publisher">    {{gourmet.user_nickname}}  </text>
+    <text id="create_time_tag">发布于{{gourmet.create_time_tag}}</text>
+</view>
+
+<view style="padding:3px 10px">
     <view bindtap="openLocation" id="openLocation">
       <image id="img_openlocation" src="../../imgs/ic_map.png"></image>
       <text style="vertical-align: middle">查看位置</text>
@@ -41,7 +47,7 @@
       
       <view style="display:flex;padding: 0px 10px;">
         <view class="layout_left">
-          <image id="avatar" src="{{item.avatar}}"></image>
+          <image class="avatar" src="{{item.avatar}}"></image>
         </view>
 
         <view class="layout_right">
