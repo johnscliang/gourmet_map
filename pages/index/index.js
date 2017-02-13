@@ -100,7 +100,8 @@ Page({
     // Do something when pull down.
     wx.stopPullDownRefresh();
     if(mLoading) return;
-    this.onShow();
+    if(!initFlag) return;
+    loadFirstPage(this);
   }
   ,onReachBottom: function() {
     // Do something when page reach bottom.
