@@ -47,6 +47,7 @@
 #create_time_tag{
     font-size: 0.5em;
     color: gray;
+    vertical-align: middle;
 }
 
 .layout_left{
