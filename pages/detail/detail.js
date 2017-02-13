@@ -50,7 +50,7 @@ Page({
     urls: [],
     indicatorDots: true,
     autoplay: true,
-    interval: 3000,
+    interval: 4000,
     duration: 1000
     //
     ,hide_loadmore: true
