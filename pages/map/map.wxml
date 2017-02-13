@@ -14,7 +14,7 @@
 
 <swiper current="{{current}}" style="height:{{map_width}}px"
  bindchange="currentChange">
-  <block wx:for="{{markers}}" wx:key="id">
+  <block wx:for="{{markers}}">
     <swiper-item>
     <view style="padding: 0px 10px;">
       <text class="itemtext_title">{{item.data.title}}</text>

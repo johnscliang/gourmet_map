@@ -46,6 +46,8 @@ Page({
 
     //
     var gourmets = app.globalData.gourmets;
+    //清空
+    markers = [];
     for(var x in gourmets){
         //
         gourmets[x].index = x;
@@ -63,6 +65,7 @@ Page({
         markers.push(marker);  
     }
     if(markers.length > 0){
+      //console.log('onLoaddddddddddddd',markers);
       markers[0].iconPath = "/imgs/ic_position_sel.png";
       that.setData({
           markers: markers
@@ -94,6 +97,7 @@ Page({
         markers[i].iconPath = "/imgs/ic_position_nor.png"
       }
       markers[current].iconPath = "/imgs/ic_position_sel.png";
+      //console.log('currentChangeeeeeeeeeeeeeeeeeeeeeeeeee',markers);
       this.setData({
           markers: markers
       })
