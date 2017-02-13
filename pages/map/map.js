@@ -40,7 +40,7 @@ Page({
     app.getSystemInfo((width, height) => {
       that.setData({
            map_width: width
-          ,map_height: height
+          ,map_height: width
         })
     })
 
