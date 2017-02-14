@@ -16,10 +16,10 @@
 <view style="padding: 10px" class="center">
 
     <view style="height:8px"/>
-    <text>已添加{{urls.length}}/3张图片</text>
+    <view class="tips">建议添加2张食物图片，1张门店图片</view>
     <view>
         <button type="primary" bindtap="add_pics">添加图片</button>
-            <view style="height:8px"></view>
+        <text class="pics_added">已添加{{urls.length}}/3张图片</text>
     </view>
 
     <view style="text-align:left">
@@ -28,7 +28,7 @@
 
     <view hidden="{{show_headurl ? false:true}}">
         <view>
-            <text class="bold">选一张作为首页图（<text class="red">点击图片切换</text>）：</text>
+            <text class="bold">选一张作为首页图（<text class="red">点击下图切换</text>）：</text>
         </view>
         <image bindload="loadPicOk" bindtap="checkout" mode="aspectFill" src="{{headurl}}"></image>
     </view>

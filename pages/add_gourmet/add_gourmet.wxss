@@ -22,3 +22,13 @@
 .thumbnail{
     margin: 2px;
 }
+
+.tips{
+    color: gray;
+    font-size: 0.8em;
+    padding: 8px;
+}
+
+.pics_added{
+    padding: 5px;
+}

@@ -45,7 +45,9 @@ Page({
             ,img_width: width/3 - 25
             ,img_height: width/3 -25
           })
-      })
+      });
+      //清理数据
+      clearData()
   }
   ,onReady: function() {
     this.chooseLocation()
