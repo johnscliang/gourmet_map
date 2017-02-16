@@ -23,6 +23,8 @@ module.exports = {
           query.limit(pagesize);
           // 每页个数
           query.skip(pagesize * (page - 1))
+          //隐藏的去掉
+          query.notEqualTo("hide", true);
           // 查询
           query.find({
             success: function(gourmets) {
