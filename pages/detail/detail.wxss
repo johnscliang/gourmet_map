@@ -111,20 +111,32 @@ page{
     margin-left: 10px;
 }
 
-#submit{
-    width: 18%;
-    display: inline;
+.view_operate{
+    padding: 0px 10px;
+    display: flex;
+}
+
+.btn_comment{
+    width: 20%;
+    color: gray;
+    font-size: 1em;
+    text-align: center;
     padding: 5px 10px;
     line-height: 1.5em;
-    background-color: whitesmoke;
-    box-shadow: 0 0 3px darkgray;
-    border-radius: 5px;
+}
+.btn_comment:active{
+    background: #ebebeb;
+}
+#ic_write_comment{
+    width: 1em;
+    height: 1em;
     vertical-align: middle;
-    margin-left: 3px;
+    margin-bottom: 5px;
 }
-#submit:active{
-    background: lightgrey
-}
+
+
+
+
 
 #img_openlocation{
     width: 1.2em;
