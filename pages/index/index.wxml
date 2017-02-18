@@ -8,20 +8,19 @@
 <view id="gourmet_list">
   
   <view wx:for="{{gourmets}}" wx:key="objectId">
-    <view style="height:1em;"/>
   
-    <view>
-      <text class="itemtext_title">{{item.title}}</text>
-       <text class="sub_title">离我{{item.distance}}km</text>
-      <view style="text-align:right">
-      <image bindtap="gotoDetail" data-item="{{item}}" class="img" mode="aspectFill"
-      src="{{item.head_url}}"></image>
-      <text hidden="true" class="distance">{{item.distance}}km</text>
+    <view class="list_item" bindtap="gotoDetail" data-item="{{item}}">
+      <text class="itemtext_title" 
+            data-item="{{item}}">{{item.title}}</text>
+      <text class="sub_title" 
+            data-item="{{item}}">离我{{item.distance}}km</text>
+      <view>
+        <image class="img" mode="aspectFill" src="{{item.head_url}}"
+               data-item="{{item}}"></image>
       </view>
-      <text class="address">地址：{{item.address}}</text>
+      <text class="address" 
+            data-item="{{item}}">地址：{{item.address}}</text>
     </view>
-
-    <view class="line"/>
 
   </view>
 

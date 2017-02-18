@@ -1,3 +1,13 @@
+.main{
+    background: #ebebeb
+}
+
+.list_item{
+    background: white;
+    margin-bottom: 1em;
+    padding: 1em 0em;
+}
+
 .header{
     position: fixed;
     width: 100%;
