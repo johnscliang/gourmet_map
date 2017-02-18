@@ -48,6 +48,28 @@ page{
     padding: 5px 10px;
 }
 
+.support_info{
+    float: right;
+    display: inline-block;
+}
+.support_info_support{
+    display: inline-block;
+}
+.support_info_unsupport{
+    display: inline-block;
+}
+.support_info image{
+    width: 0.8em;
+    height: 0.8em;
+    margin-left: 10px;
+}
+.support_info text{
+    font-size: 0.8em;
+    color: gray;
+    padding-left: 3px;
+}
+
+
 #publisher_avatar{
     vertical-align: middle;
     width: 1.8em;
@@ -108,7 +130,7 @@ page{
     display: flex;
 }
 
-.btn_comment{
+.btn_operate{
     width: 30%;
     color: gray;
     font-size: 1em;
@@ -116,10 +138,10 @@ page{
     padding: 5px 10px;
     line-height: 1.5em;
 }
-.btn_comment:active{
+.btn_operate:active{
     background: #ebebeb;
 }
-#ic_write_comment{
+.ic_operate{
     width: 1em;
     height: 1em;
     vertical-align: middle;

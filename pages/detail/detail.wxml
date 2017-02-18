@@ -30,15 +30,33 @@
 
 <view class="gourmet_info">
   <text id="create_time_tag">发布于{{gourmet.create_time_tag}}</text>
+  <view class="support_info">
+    <view class="support_info_support">
+      <image src="/imgs/ic_like.png"></image>
+      <text>{{gourmet.support ? gourmet.support : 0}}</text>
+    </view>
+    <view class="support_info_unsupport">
+      <image src="/imgs/ic_unlike.png"></image>
+      <text>{{gourmet.objection ? gourmet.objection : 0}}</text>
+    </view>
+  </view>
 </view>
 
 <!--comments-->
 <view class="comment">
     
     <view class="view_operate">
-      <view bindtap="openComment" class="btn_comment">
-      <image id="ic_write_comment" src="/imgs/ic_write_comment.png"></image>
+      <view bindtap="openComment" class="btn_operate">
+      <image class="ic_operate" src="/imgs/ic_write_comment.png"></image>
       写评论</view>
+
+      <view bindtap="addSupport" class="btn_operate">
+      <image class="ic_operate" src="{{ic_support}}"></image>
+      顶</view>
+
+      <view bindtap="addUnsupport" class="btn_operate">
+      <image class="ic_operate" src="{{ic_unsupport}}"></image>
+      踩</view>
     </view>
 
     <view class="comment_layout" wx:for="{{comments}}" wx:key="objectId">

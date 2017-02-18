@@ -54,6 +54,8 @@ Page({
     duration: 1000
     //
     ,hide_loadmore: true
+    ,ic_support: "/imgs/ic_supported.png"
+    ,ic_unsupport: "/imgs/ic_unsupport.png"
   }
   ,onLoad: function(option){
       var that = this;
