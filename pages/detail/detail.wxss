@@ -103,21 +103,13 @@ page{
     display: block;
 }
 
-.comment_area{
-    display: inline-block;
-    width: 78%;
-    border: 1px solid lightgrey;
-    vertical-align: middle;
-    margin-left: 10px;
-}
-
 .view_operate{
     padding: 0px 10px;
     display: flex;
 }
 
 .btn_comment{
-    width: 20%;
+    width: 30%;
     color: gray;
     font-size: 1em;
     text-align: center;
@@ -134,9 +126,50 @@ page{
     margin-bottom: 5px;
 }
 
-
-
-
+.view_comment{
+  position: fixed;
+  display: flex;
+  top: 0px;
+  z-index: 50;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 6, 0.5);
+}
+.comment_layer{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 3em;
+}
+.view_comment form{
+    width: 100%;
+    padding: 0px 10px;
+    background: white;
+    position: absolute;
+    line-height: 3em;
+    bottom: 0px;
+}
+.view_comment input{
+    border: 1px solid #ebebeb;
+    width: 70%;
+    height: 1.5em;
+    display: inline-block;
+    vertical-align: middle;
+}
+.btn_send_comment{
+    width: 4em;
+    vertical-align: middle;
+    display: inline-block;
+    color: gray;
+    font-size: 1em;
+    text-align: center;
+    padding: 5px 10px;
+    line-height: 1.5em;
+}
+.btn_send_comment:active{
+    background: #ebebeb;
+}
 
 #img_openlocation{
     width: 1.2em;

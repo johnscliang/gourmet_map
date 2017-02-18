@@ -36,19 +36,10 @@
 <view class="comment">
     
     <view class="view_operate">
-      <view class="btn_comment">
+      <view bindtap="openComment" class="btn_comment">
       <image id="ic_write_comment" src="/imgs/ic_write_comment.png"></image>
-      评论</view>
+      写评论</view>
     </view>
-
-    <!--<view>
-      <textarea placeholder="输入你的评论" auto-height="true" maxlength="500" 
-     bindinput="inputComment"
-    class="comment_area" value="{{textarea_content}}" />
-      <view id="submit"  bindtap="addComment">
-        提交
-      </view>
-    </view>-->
 
     <view class="comment_layout" wx:for="{{comments}}" wx:key="objectId">
       
@@ -74,5 +65,19 @@
 </view>
 
 <!--<include src="../common/loading.wxml"/>-->
+
+<view hidden="{{!show_comment}}"
+      class="view_comment">
+  <view class="comment_layer" catchtouchstart="closeComment"></view>
+  <form>
+     <input placeholder="请输入评论..." 
+     bindinput="inputComment"
+     name="commContent" value="{{commContent}}"
+     focus="{{focus}}" />
+     <view class="btn_send_comment"
+     bindtap="addComment"
+     formType="submit">提交</view>
+  </form>
+</view>
 
 </view>

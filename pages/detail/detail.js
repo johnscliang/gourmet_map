@@ -111,13 +111,13 @@ Page({
 
   ,inputComment:function(e){
        this.setData({
-         textarea_content:e.detail.value
+         commContent:e.detail.value
        })
   }
 
   ,addComment: function(e){
       var that = this;
-      var content = this.data.textarea_content;
+      var content = this.data.commContent;
       console.log(content);
       if(content == "" || content == null){
           return utils.showModal('错误','请输入评论')
@@ -129,7 +129,9 @@ Page({
           if(ok){
             that.setData({
               //新增成功之后，清空输入框
-              textarea_content: ""
+              commContent: ""
+              ,show_comment: false
+              ,focus: false
             });
             loadFirstPage(that);
           }
@@ -184,7 +186,21 @@ Page({
   }
   //组织事件冒泡
   ,stopScroll: function(){
-
+    console.log('stopScoll')
+  }
+  //open comment layour
+  ,openComment: function(){
+    this.setData({
+      show_comment: true
+      ,focus: true
+    })
+  }
+  //close comment layout
+  ,closeComment: function(){
+    this.setData({
+      show_comment: false
+      ,focus: false
+    })
   }
 })
 
