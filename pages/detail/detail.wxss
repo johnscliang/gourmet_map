@@ -1,5 +1,15 @@
+page{
+    background: #ebebeb;
+}
+
 .center{
-    text-align: center
+    text-align: center;
+    background: white;
+}
+
+.view_description{
+    padding:3px 10px;
+    background: white;
 }
 
 .right{
@@ -7,9 +17,10 @@
 }
 
 .title{
-    font-size: 1.5em;
+    padding: 5px 10px;
+    text-align: center;
+    font-size: 1.2em;
     font-weight: 700;
-    padding: 8px 0px 0px 10px;
 }
 
 .description{
@@ -20,32 +31,39 @@
     vertical-align: middle;
     width: 2.5em;
     height: 2.5em;
-    border: 1px solid lightgrey;
+    border: 1px solid #ebebeb;
     border-radius: 5%;
 }
 
-.footer{
+.view_publisher{
     padding: 3px 10px;
-    /*text-align: right;*/
+    text-align: center;
     line-height: 1em;
+    background: white;
+    padding-top: 1em;
+}
+
+.gourmet_info{
+    background: white;
+    padding: 5px 10px;
 }
 
 #publisher_avatar{
     vertical-align: middle;
-    width: 1em;
-    height: 1em;
-    border: 1px solid lightgrey;
-    border-radius: 5%;
+    width: 1.8em;
+    height: 1.8em;
+    border: 1px solid #ebebeb;
+    border-radius: 50%;
 }
 
 #publisher{
-    font-size: 0.5em;
+    font-size: 0.8em;
     color: gray;
     vertical-align: middle;
 }
 
 #create_time_tag{
-    font-size: 0.5em;
+    font-size: 0.8em;
     color: gray;
     vertical-align: middle;
 }
@@ -58,9 +76,15 @@
     margin-left: 10px;
 }
 
+.comment{
+    padding-top: 10px;
+    min-height: 15em;
+    margin-top: 1.8em;
+    background: white;
+}
+
 .comment_layout{
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 15px;
 }
 
 .comment_text_nickname{
@@ -130,6 +154,6 @@
 
 .line{
     height: 1px;
-    background: lightgrey;
+    background: #ebebeb;
     margin-top: 5px;
 }

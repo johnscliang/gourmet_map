@@ -1,7 +1,9 @@
-.main{
+page{
     background: #ebebeb
 }
-
+.list_item:active{
+    background: #ebebeb;
+}
 .list_item{
     background: white;
     margin-bottom: 1em;

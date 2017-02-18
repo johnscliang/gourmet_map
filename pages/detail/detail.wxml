@@ -1,7 +1,5 @@
 <view class="main">
 
-<view class="title">{{gourmet.title}}</view>
-
 <view class="center">
 
 <swiper style="height:{{img_height}}px" indicator-dots="{{indicatorDots}}"
@@ -16,13 +14,8 @@
 
 </view>
 
-<view class="footer">
-    <image id="publisher_avatar" src="{{gourmet.user_avatar}}"></image>
-    <text id="publisher">    {{gourmet.user_nickname}}  </text>
-    <text id="create_time_tag">发布于{{gourmet.create_time_tag}}</text>
-</view>
-
-<view style="padding:3px 10px">
+<view class="view_description">
+    <view class="title">{{gourmet.title}}</view>
     <view bindtap="openLocation" id="openLocation">
       <image id="img_openlocation" src="../../imgs/ic_map.png"></image>
       <text style="vertical-align: middle">查看位置</text>
@@ -30,9 +23,18 @@
     <text class="description">“ {{gourmet.description}}”</text>
 </view>
 
+<view class="view_publisher">
+    <image id="publisher_avatar" src="{{gourmet.user_avatar}}"></image>
+    <view id="publisher">{{gourmet.user_nickname}}</view>
+</view>
+
+<view class="gourmet_info">
+  <text id="create_time_tag">发布于{{gourmet.create_time_tag}}</text>
+</view>
+
 <!--comments-->
-<view>
-    <view style="height:10px"/>
+<view class="comment">
+    
     <view>
       <textarea placeholder="输入你的评论" auto-height="true" maxlength="500" 
      bindinput="inputComment"
@@ -41,7 +43,6 @@
         提交
       </view>
     </view>
-    <view style="height:10px"/>
 
     <view class="comment_layout" wx:for="{{comments}}" wx:key="objectId">
       
