@@ -7,7 +7,7 @@ page{
 .list_item{
     background: white;
     margin-bottom: 1em;
-    padding: 1em 0em;
+    padding: 1em 0em 0.5em 0em;
 }
 
 .header{
@@ -79,4 +79,21 @@ page{
     top: -25px;
     font-size: 12px;
     /*color: white;*/
+}
+
+.support_info{
+    text-align: right;
+    /*margin-top: 10px;*/
+    padding-right: 10px;
+}
+
+.support_info image{
+    width: 0.8em;
+    height: 0.8em;
+    margin-left: 10px;
+}
+.support_info text{
+    font-size: 0.8em;
+    color: gray;
+    padding-left: 3px;
 }

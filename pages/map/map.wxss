@@ -1,12 +1,18 @@
+page{
+    background: #ebebeb;
+}
 #map{
 
 }
 
 #swiper_area{
-    /*width: 100%;
-    position: absolute;
-    top: 0px;
-    z-index: 100;*/
+    background: white;
+    margin-top: 0.2em;
+    padding-top: 10px;
+}
+
+swiper{
+   
 }
 
 .img{
@@ -53,4 +59,20 @@
     background: limegreen;
     margin-bottom: 5px;
     padding: 0px 10px;
+}
+
+.support_info{
+    text-align: right;
+    padding-right: 10px;
+}
+
+.support_info image{
+    width: 0.8em;
+    height: 0.8em;
+    margin-left: 10px;
+}
+.support_info text{
+    font-size: 0.8em;
+    color: gray;
+    padding-left: 3px;
 }
