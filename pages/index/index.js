@@ -111,10 +111,11 @@ Page({
   ,gotoDetail: function(e){
     if(mLoading) return;
     var item = e.target.dataset.item;
-    console.log('gotoDetail',e.target.dataset);
-    wx.navigateTo({
-      url: '/pages/detail/detail?item='+JSON.stringify(item)
-    })
+    if(item){
+      wx.navigateTo({
+        url: '/pages/detail/detail?item='+JSON.stringify(item)
+      })
+    }
   }
   ,onShareAppMessage: function () {
     return {

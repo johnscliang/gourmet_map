@@ -77,9 +77,11 @@ Page({
   //
   ,gotoDetail: function(e){
     var item = e.target.dataset.item;
-    wx.navigateTo({
-      url: '../detail/detail?item='+JSON.stringify(item)
-    })
+    if(item){
+      wx.navigateTo({
+        url: '../detail/detail?item='+JSON.stringify(item)
+      })
+    }
   }
 
   //
