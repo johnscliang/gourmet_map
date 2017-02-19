@@ -45,7 +45,64 @@ module.exports = {
       })
     }
 
+    //获取用户对应食物的顶踩信息
+    ,getGourmetSupportInfo: function(gourmetID, cb){
+      var Evaluation = Bmob.Object.extend("evaluation");
+      app.getUserInfo((userinfo)=>{
+          var query = new Bmob.Query(Evaluation);
+          query.equalTo("openid_gourmetid", userinfo.openid + '-' + gourmetID);
+          query.first({
+            success: function(object) {
+              // 查询成功
+              if(object){
+                cb(JSON.parse(JSON.stringify(object)))
+              }else{
+                cb(undefined)
+              }
+              
+            },
+            error: function(error) {
+              cb(null)
+            }
+          });
+      })
+    }
 
+    //add evaluation
+    ,addEvaluation: function(gourmetID, support){
+      var Evaluation = Bmob.Object.extend("evaluation");
+      app.getUserInfo((userinfo)=>{
+        var evaluation = new Evaluation();
+        evaluation.set('openid_gourmetid', userinfo.openid + '-' + gourmetID);
+        evaluation.set('has',true);
+        evaluation.set('support', support);
+        
+        evaluation.save(null, {
+            success: function(result){
+              //修改gourmet的support
+              var Gourmet = Bmob.Object.extend("gourmet");
+              var query = new Bmob.Query(Gourmet);
+              query.get(gourmetID, {
+                success: function(result) {
+                  if(support){
+                    result.increment('support');
+                  }else{
+                    result.increment('objection');
+                  }
+                  result.save();
+                },
+                error: function(object, error) {
+
+                }
+            });
+              
+            }
+            ,error: function(result, error){
+
+            }
+        })
+      })
+    }
 
 
 

@@ -1,6 +1,7 @@
 var app = getApp();
 var Bmob = require('../../utils/bmob.js');
 var utils = require('../../utils/util.js');
+var API = require('../../api/API.js');
 
 var gourmet = null;
 var mComments = [];
@@ -9,11 +10,36 @@ const PAGE_SIZE = 10;
 var mPage = 1;
 var mIsmore = true;
 var mLoading = false;
+var mIsSupportOk = false;
 
 function setLoading(loading){
   mLoading = loading;
   utils.showLoading(loading);
   loading ? wx.showNavigationBarLoading():wx.hideNavigationBarLoading()
+}
+
+var loadSupportSataus = function(gourmetID, that){
+  API.getGourmetSupportInfo(gourmetID,(evaluation)=>{
+    console.log('evaluation',JSON.stringify(evaluation));
+    if(!evaluation || (evaluation && !evaluation.has)){ //没有评价过
+      mIsSupportOk = true;
+    }
+    if(evaluation && evaluation.has){
+      toggleSupport(that,evaluation.support)
+    }
+  })
+}
+
+var toggleSupport = function(that,support){
+  if(support){
+        that.setData({
+         ic_support: "/imgs/ic_supported.png"
+        })
+      }else{
+        that.setData({
+          ic_unsupport: "/imgs/ic_unsupported.png"
+        })
+      }
 }
 
 //comments
@@ -54,7 +80,7 @@ Page({
     duration: 1000
     //
     ,hide_loadmore: true
-    ,ic_support: "/imgs/ic_supported.png"
+    ,ic_support: "/imgs/ic_support.png"
     ,ic_unsupport: "/imgs/ic_unsupport.png"
   }
   ,onLoad: function(option){
@@ -65,7 +91,8 @@ Page({
         that.setData({
           gourmet: gourmet 
         })
-        loadFirstPage(this)
+        loadFirstPage(this);
+        loadSupportSataus(gourmet.objectId, that);
       }else{
         setLoading(true);
         var Gourmet = Bmob.Object.extend("gourmet");
@@ -78,6 +105,7 @@ Page({
               gourmet: gourmet 
             })
             loadFirstPage(this);
+            loadSupportSataus(gourmet.objectId, that);
           },
           error: function(object, error) {
             // 查询失败
@@ -85,11 +113,6 @@ Page({
             utils.showModal('错误','请求出错');
           }
         });
-
-        that.setData({
-          gourmet: gourmet 
-        })
-        loadFirstPage(this);
       }
       
       //
@@ -99,7 +122,8 @@ Page({
           ,img_height: width * 9/16
           })
       })  
-      
+      //
+      mIsSupportOk = false;//防止用户马上点赞
   }
 
   ,preview: function(){
@@ -203,6 +227,36 @@ Page({
       show_comment: false
       ,focus: false
     })
+  }
+  //addSupport
+  ,addSupport: function(){
+    var that = this;
+    if(!mIsSupportOk) return;
+    if(!that.data.gourmet) return;
+    API.addEvaluation(that.data.gourmet.objectId, true);
+    var newNumber = that.data.gourmet.support + 1;
+    that.data.gourmet.support = newNumber;
+    that.setData({
+      gourmet: that.data.gourmet
+    })
+    toggleSupport(that,true)
+    mIsSupportOk = false;
+
+  }
+  //addUnsupport
+  ,addUnsupport: function(){
+    var that = this;
+    if(!mIsSupportOk) return;
+    if(!that.data.gourmet) return;
+    API.addEvaluation(that.data.gourmet.objectId, false);
+    var newNumber = that.data.gourmet.objection + 1;
+    that.data.gourmet.objection = newNumber;
+    that.setData({
+      gourmet: that.data.gourmet
+    })
+    toggleSupport(that,false)
+    mIsSupportOk = false;
+
   }
 })
 
