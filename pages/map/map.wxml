@@ -12,21 +12,25 @@
 <swiper current="{{current}}" style="height:{{map_width}}px"
  bindchange="currentChange">
   <block wx:for="{{markers}}">
-    <swiper-item>
-    <view style="padding: 0px 10px;">
-      <text class="itemtext_title">{{item.data.title}}</text>
-       <text class="sub_title">离我{{item.data.distance}}km</text>
+    <swiper-item bindtap="gotoDetail" data-item="{{item.data}}">
+    <view style="padding: 0px 10px;"
+          data-item="{{item.data}}">
+       <text data-item="{{item.data}}"
+        class="itemtext_title">{{item.data.title}}</text>
+       <text data-item="{{item.data}}"
+        class="sub_title">离我{{item.data.distance}}km</text>
       <view style="text-align:right">
-      <image bindtap="gotoDetail" data-item="{{item.data}}" class="img" mode="aspectFill"
-      src="{{item.data.head_url}}"></image>
-      <text hidden="true" class="distance">{{item.data.distance}}km</text>
+      <image data-item="{{item.data}}" class="img" mode="aspectFill" src="{{item.data.head_url}}"></image>
       </view>
-      <text class="address">{{item.data.address}}</text>
-      <view class="support_info">
-        <image src="/imgs/ic_like.png"></image>
-        <text>{{item.data.support ? item.data.support : 0}}</text>
-        <image src="/imgs/ic_unlike.png"></image>
-        <text>{{item.data.objection ? item.data.objection : 0}}</text>
+      <text data-item="{{item.data}}"
+       class="address">{{item.data.address}}</text>
+      <view data-item="{{item.data}}"
+            class="support_info">
+        <image data-item="{{item.data}}"
+         src="/imgs/ic_like.png"></image>
+        <text data-item="{{item.data}}">{{item.data.support ? item.data.support : 0}}</text>
+        <image data-item="{{item.data}}" src="/imgs/ic_unlike.png"></image>
+        <text data-item="{{item.data}}">{{item.data.objection ? item.data.objection : 0}}</text>
       </view>
     </view>
 
