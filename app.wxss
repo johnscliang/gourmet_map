@@ -33,3 +33,7 @@
     width: 30px;
     height: 30px;
 }
+
+.center{
+  text-align: center;
+}

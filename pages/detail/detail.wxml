@@ -16,11 +16,7 @@
 
 <view class="view_description">
     <view class="title">{{gourmet.title}}</view>
-    <view bindtap="openLocation" id="openLocation">
-      <image id="img_openlocation" src="../../imgs/ic_map.png"></image>
-      <text style="vertical-align: middle">查看位置</text>
-    </view>
-    <text class="description">“ {{gourmet.description}}”</text>
+    <text class="description">{{gourmet.description}}</text>
 </view>
 
 <view class="view_publisher">
@@ -40,6 +36,13 @@
       <text>{{gourmet.objection ? gourmet.objection : 0}}</text>
     </view>
   </view>
+</view>
+
+<view class="center">
+      <view bindtap="openLocation" id="openLocation">
+        <image id="img_openlocation" src="../../imgs/ic_map.png"></image>
+        <text style="vertical-align: middle">查看位置</text>
+      </view>
 </view>
 
 <!--comments-->
