@@ -16,6 +16,16 @@ function setLoading(loading){
 }
 
 function loadFirstPage(that){
+  if(!app.globalData.locationInfo){
+    app.getLocationInfo(info=>{
+      console.log('先获取位置,',info)
+    })
+    setTimeout(function(){
+      loadFirstPage(that)
+    },1500);
+    return;
+  }
+
   setLoading(true);
   API.getGourmetByPage(1, PAGE_SIZE, (gourmets)=>{
     console.log('loadFirstPage',gourmets);
