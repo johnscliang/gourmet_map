@@ -224,3 +224,8 @@ page{
     background: #ebebeb;
     margin-top: 5px;
 }
+
+#sofa{
+    width: 120px;
+    height: 120px;
+}

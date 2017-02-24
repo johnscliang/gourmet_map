@@ -62,6 +62,13 @@
       踩</view>
     </view>
 
+    <block wx:if="{{!comments}}">
+      <view class="center" bindtap="openComment">
+        <image id="sofa" src="/imgs/ic_sofa.png"></image>
+        <view style="color: #707070;">抢沙发</view>
+      </view>
+    </block>
+
     <view class="comment_layout" wx:for="{{comments}}" wx:key="objectId">
       
       <view style="display:flex;padding: 0px 10px;">
