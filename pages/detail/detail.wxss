@@ -225,6 +225,10 @@ page{
     margin-top: 5px;
 }
 
+.blank:active{
+    background: gainsboro;
+}
+
 #sofa{
     width: 120px;
     height: 120px;
