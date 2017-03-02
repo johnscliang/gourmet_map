@@ -9,6 +9,7 @@ var urls = [];
 var headurl = "";//
 var headurlIndex = 0;
 var geopoint = null;
+var MAX_PIC_LENGTH = 6;
 
 var mDoing = false;
 
@@ -31,6 +32,7 @@ Page({
       map_width: 380
       ,map_height: 380
       ,urls:[]
+      ,total_pics_number: MAX_PIC_LENGTH
     }
     ,onLoad: function(){
       var that = this;
@@ -55,14 +57,14 @@ Page({
   //add pictures
   ,add_pics:function(){
     if(mDoing)return;
-    if(urls.length == 3){
-      utils.showModal('错误','最多添加3张图片')
+    if(urls.length == MAX_PIC_LENGTH){
+      utils.showModal('错误','最多添加'+MAX_PIC_LENGTH+'张图片')
       return;
     }
     
     var that = this;
       wx.chooseImage({
-        count: 3 - urls.length, // 最多3张图片好了
+        count: MAX_PIC_LENGTH - urls.length, // 最多MAX_PIC_LENGTH张图片
         sizeType: ['compressed'],
         sourceType: ['album', 'camera'],
         success: function (res) {

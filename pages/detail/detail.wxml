@@ -65,7 +65,7 @@
     <block wx:if="{{!comments}}">
       <view class="center blank" bindtap="openComment">
         <image id="sofa" src="/imgs/ic_sofa.png"></image>
-        <view style="color: #707070;">快抢沙发</view>
+        <view style="color: #bfbfbf;">快抢沙发</view>
       </view>
     </block>
 

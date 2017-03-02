@@ -16,10 +16,10 @@
 <view style="padding: 10px" class="center">
 
     <view style="height:8px"/>
-    <view class="tips">建议添加2张食物图片，1张门店图片</view>
+    <view class="tips">建议添加至少1张门店图片，方便吃货们寻找</view>
     <view>
         <button type="primary" bindtap="add_pics">添加图片</button>
-        <text class="pics_added">已添加{{urls.length}}/3张图片</text>
+        <text class="pics_added">已添加{{urls.length}}/{{total_pics_number}}张图片</text>
     </view>
 
     <view style="text-align:left">
