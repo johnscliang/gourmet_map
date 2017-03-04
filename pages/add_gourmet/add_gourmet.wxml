@@ -5,7 +5,8 @@
     <view style="height:8px"></view>
     <text class="bold">地址：</text>
     <input bindinput="inputAddress" value="{{address}}" maxlength="140" style="height:2em" class="input" />
-    <text class="bold">美食点名称名称：</text>
+    <view style="height:5px"/>
+    <text class="bold">美食名称：</text>
     <input bindinput="inputTitle" value="{{title}}" maxlength="140" style="height:2em" class="input" />
     <view style="height:5px"/>
     <text class="bold">简单描述一下：</text>
