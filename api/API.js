@@ -18,7 +18,7 @@ module.exports = {
           // location附近的位置
           //query.near("location", point);
           //query.withinGeoBox("location", southwestOfSF, northeastOfSF);
-          query.withinKilometers("location", point, 3000);
+          query.withinKilometers("location", point, 30000);
           // 每页个数
           query.limit(pagesize);
           // 每页个数
