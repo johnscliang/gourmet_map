@@ -71,7 +71,8 @@
     };
 
     // Set the server for Bmob to talk to.
-    Bmob.serverURL = "https://api.bmob.cn";
+    Bmob.serverURL = "https://api.bmobcloud.com";
+
     Bmob.fileURL = "http://file.bmob.cn";
 
     // Check whether we are running in Node.js.
